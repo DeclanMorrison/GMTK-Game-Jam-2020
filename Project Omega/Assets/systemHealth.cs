@@ -17,7 +17,7 @@ public class systemHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<ItemClassification>().itemType == acceptedCargo)
+        if (other.gameObject.tag == "Cargo" && other.gameObject.GetComponent<ItemClassification>().itemType == acceptedCargo)
         {
 
             Destroy(other.gameObject);

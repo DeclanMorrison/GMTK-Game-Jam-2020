@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     public Rigidbody2D ship;
     public Pickup pickup;
-    public Animator animator;
+    private Animator animator;
 
     //horizontal movement
     float horMoveInput;
@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     public KeyCode jumpKey = KeyCode.None;
     public float jumpForce = 1;
     private bool isOnGround = false;
+
+    //fixing
+    public KeyCode fixKey = KeyCode.None;
 
 
     void Start()
@@ -48,6 +51,8 @@ public class Player : MonoBehaviour
             transform.rotation = quaternion.Euler(0, 0, 0);
             pickup.throwAngle.x = -1f;
         }
+
+
 
         //sprinting
         if (Input.GetKeyDown(sprintKey))
@@ -79,6 +84,12 @@ public class Player : MonoBehaviour
         else
         {
             animator.SetBool("isWalking", false);
+        }
+
+        //swinging wrench
+        if(Input.GetKeyDown(fixKey))
+        {
+            animator.SetBool("isWalking", true);
         }
 
     }
