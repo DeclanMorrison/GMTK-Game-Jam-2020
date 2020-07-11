@@ -60,7 +60,7 @@ public class Pickup : MonoBehaviour
         }
 
         //throw
-        if (carriedObject != null && Input.GetKeyDown(throwKey))
+        else if (carriedObject != null && Input.GetKeyDown(throwKey))
         {
             Debug.Log("Throw initiated");
             carriedObject.GetComponent<Rigidbody2D>().velocity = ship.velocity;
