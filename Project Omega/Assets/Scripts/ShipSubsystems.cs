@@ -6,29 +6,22 @@ using UnityEngine;
 public class ShipSubsystems : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Dictionary<string, bool> subSystems = new Dictionary<string, bool>();
+
     public int health = 100;
+    public float damageFactor = 1.5f;
     public bool fueled = true;
 
     public float speed = 2;
     public float brokenSpeed = 0.5f;
-    public bool rightThruster = true;
-    public bool leftThruster = true;
-    public bool upThruster = true;
-    public bool downThruster = true;
 
     public float brokenRotation = 75;
     public float rotation = 45;
-    public bool rotationLocks = true;
 
     public float brokenShake = 4;
     public float normalShake = 1;
-    public bool vibrationDampeners = true;
 
-    public bool radar = true;
-    public bool turret = true;
     public int turretAmmo = 0;
-
-    public bool missles = true;
     public int missleAmmo = 0;
 
     private ShipMovement shipMovement;
@@ -36,15 +29,26 @@ public class ShipSubsystems : MonoBehaviour
     void Start()
     {
         shipMovement = GetComponent<ShipMovement>();
+        //Add all Subsystems to Dictionary
+        subSystems.Add("rightThruster", true);
+        subSystems.Add("leftThruster", true);
+        subSystems.Add("upThruster", true);
+        subSystems.Add("downThruster", true);
+        subSystems.Add("rotationLocks", true);
+        subSystems.Add("vibrationDampeners", true);
+        subSystems.Add("radar", true);
+        subSystems.Add("turret", true);
+        subSystems.Add("missles", true);
     }
 
     internal void Damage(float size, float collisonSpeed)
     {
-        Debug.Log("Ouchie I got hit");
+        float severity = size * collisonSpeed * damageFactor;
+        Debug.Log(severity);
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         StateEffects();
     }
@@ -67,24 +71,24 @@ public class ShipSubsystems : MonoBehaviour
             shipMovement.thrusterStrengthRight = 0;
         }
         // A thruster will have broken speed if damaged
-        if (!downThruster)
+        if (!subSystems["downThruster"])
         {
             shipMovement.thrusterStrengthDown = brokenSpeed;
         }
-        if (!upThruster)
+        if (!subSystems["upThruster"])
         {
             shipMovement.thrusterStrengthUp = brokenSpeed;
         }
-        if (!leftThruster)
+        if (!subSystems["leftThruster"])
         {
             shipMovement.thrusterStrengthLeft = brokenSpeed;
         }
-        if (!rightThruster)
+        if (!subSystems["rightThruster"])
         {
             shipMovement.thrusterStrengthRight = brokenSpeed;
         }
         // Rotation locks broken will cause ship to rotate more
-        if (rotationLocks)
+        if (subSystems["rotationLocks"])
         {
             shipMovement.maxRotation = rotation;
             shipMovement.minRotation = -rotation;
@@ -95,7 +99,7 @@ public class ShipSubsystems : MonoBehaviour
             shipMovement.minRotation = -brokenRotation;
         }
         // Vibration Dampening broken will cause ship to shake more
-        if (vibrationDampeners)
+        if (subSystems["vibrationDampeners"])
         {
             shipMovement.shakeStrength = normalShake;
         }
