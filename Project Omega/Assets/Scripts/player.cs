@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     {
         horMoveInput = Input.GetAxisRaw("Horizontal"); // Gets input for left/right movement.  returns -1, 0 , 1
 
+        //flip things vased on direction of move
         if (horMoveInput > 0)
         {
             transform.rotation = quaternion.Euler(0, 3.14159f, 0);
@@ -47,21 +48,19 @@ public class Player : MonoBehaviour
             transform.rotation = quaternion.Euler(0, 0, 0);
             pickup.throwAngle.x = -1f;
         }
-        else
-        {
-
-        }
 
         //sprinting
         if (Input.GetKeyDown(sprintKey))
         {
             moveAccel = moveAccel * sprintMultiplier;
             maxSpeed = maxSpeed * sprintMultiplier;
+            animator.SetBool("isSprinting", true);
         }
         if (Input.GetKeyUp(sprintKey))
         {
             moveAccel = moveAccel / sprintMultiplier;
             maxSpeed = maxSpeed / sprintMultiplier;
+            animator.SetBool("isSprinting", false);
         }
 
         //executes jump
