@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pickup : MonoBehaviour
+public class Pickup : MonoBehaviour
 {
 
     public KeyCode itemKey = KeyCode.None;
     public KeyCode throwKey = KeyCode.None;
-    public bool isCarrying = false;
     public GameObject carriedObject = null;
     public BoxCollider2D carriedCollider = null;
     public Vector3 translationOffset;
@@ -19,11 +18,6 @@ public class pickup : MonoBehaviour
     public Vector2 throwAngle;
     public Rigidbody2D ship;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -36,7 +30,7 @@ public class pickup : MonoBehaviour
         }
 
         //pickup closest opbject
-        if (isCarrying == false && Input.GetKeyDown(itemKey))
+        if (carriedObject == null && Input.GetKeyDown(itemKey))
         {
             Debug.Log("pickup initiated");
             Collider2D[] grabableObjects = new Collider2D[50];
@@ -58,7 +52,6 @@ public class pickup : MonoBehaviour
             }
             if (closestObject != null)
             {
-                isCarrying = true;
                 carriedObject = closestObject;
                 carriedCollider = carriedObject.GetComponent<BoxCollider2D>();
                 //carriedCollider.enabled = !carriedCollider.enabled;
@@ -67,13 +60,12 @@ public class pickup : MonoBehaviour
         }
 
         //throw
-        if (isCarrying == true && Input.GetKeyDown(throwKey))
+        if (carriedObject != null && Input.GetKeyDown(throwKey))
         {
             Debug.Log("Throw initiated");
             carriedObject.GetComponent<Rigidbody2D>().velocity = ship.velocity;
             carriedObject.GetComponent<Rigidbody2D>().velocity += throwAngle * throwVelocity;
             //carriedCollider.enabled = !carriedCollider.enabled;
-            isCarrying = false;
             carriedObject = null;
             carriedCollider = null;
         }
