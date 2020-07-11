@@ -8,7 +8,7 @@ public enum ItemType
     Fuel,
     Bullets,
     Rockets,
-    Sensors
+    Sensors,
 }
 
 public class systemHealth : MonoBehaviour
@@ -17,24 +17,16 @@ public class systemHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.GetComponent<ItemClassification>().itemType == acceptedCargo)
+        if (other.gameObject.tag == "Cargo" && other.gameObject.GetComponent<ItemClassification>().itemType == acceptedCargo)
         {
-
             Destroy(other.gameObject);
         }
     }
 
 
-    // Start is called before the first frame update
-    void Start()
+    public void Damage()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
 

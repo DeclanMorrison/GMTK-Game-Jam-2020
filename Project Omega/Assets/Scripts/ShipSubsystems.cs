@@ -21,7 +21,7 @@ public class SubSystemClass
 {
     public ShipSubSystemType type;
     public bool status;
-    public GameObject gameObject;
+    public systemHealth healthScript;
 }
 
 public class ShipSubsystems : MonoBehaviour
@@ -66,6 +66,7 @@ public class ShipSubsystems : MonoBehaviour
             if (subSystems[randomSystem].status)
             {
                 subSystems[randomSystem].status = false;
+                subSystems[randomSystem].healthScript.Damage();
             }
         }
         else
