@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 2732632684854223062}
   - component: {fileID: 2732632684854223063}
   - component: {fileID: 2732632684854223059}
+  - component: {fileID: 4430813774975545633}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,3 +158,34 @@ MonoBehaviour:
   minRotation: -45
   maxRotation: 45
   speed: 2
+--- !u!114 &4430813774975545633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2732632684854222888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3766a92395bfc4d4b9319377869bcdbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  fueled: 1
+  speed: 2
+  brokenSpeed: 0.25
+  rightThruster: 1
+  leftThruster: 1
+  upThruster: 1
+  downThruster: 1
+  brokenRotation: 75
+  rotation: 45
+  rotationLocks: 1
+  brokenShake: 4
+  normalShake: 1
+  vibrationDampeners: 1
+  radar: 1
+  turret: 1
+  turretAmmo: 0
+  missles: 1
+  missleAmmo: 0
