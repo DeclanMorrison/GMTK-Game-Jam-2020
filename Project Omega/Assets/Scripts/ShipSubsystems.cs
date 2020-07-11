@@ -3,10 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ShipSubSystemType
+{
+    RightThruster,
+    LeftThruster,
+    UpThruster,
+    DownThruster,
+    RotationLocks,
+    VibrationDampeners,
+    Radar,
+    Turret,
+    Missles
+}
+
+[Serializable]
+public class SubSystemClass
+{
+    public ShipSubSystemType type;
+    public bool status;
+    public GameObject gameObject;
+}
+
 public class ShipSubsystems : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Dictionary<string, bool> subSystems = new Dictionary<string, bool>();
+    public List<SubSystemClass> subSystems = new List<SubSystemClass>();
 
     public int health = 100;
     public float damageFactor = 1.5f;
@@ -29,22 +50,28 @@ public class ShipSubsystems : MonoBehaviour
     void Start()
     {
         shipMovement = GetComponent<ShipMovement>();
-        //Add all Subsystems to Dictionary
-        subSystems.Add("rightThruster", true);
-        subSystems.Add("leftThruster", true);
-        subSystems.Add("upThruster", true);
-        subSystems.Add("downThruster", true);
-        subSystems.Add("rotationLocks", true);
-        subSystems.Add("vibrationDampeners", true);
-        subSystems.Add("radar", true);
-        subSystems.Add("turret", true);
-        subSystems.Add("missles", true);
     }
 
     internal void Damage(float size, float collisonSpeed)
     {
         float severity = size * collisonSpeed * damageFactor;
-        Debug.Log(severity);
+        if (severity > 50)
+        {
+            health -= (int) severity / 10;
+
+            Array values = Enum.GetValues(typeof(ShipSubSystemType));
+            System.Random rand = new System.Random();
+ 
+            int randomSystem = rand.Next(values.Length);
+            if (subSystems[randomSystem].status)
+            {
+                subSystems[randomSystem].status = false;
+            }
+        }
+        else
+        {
+            health -= (int) (severity / 10);
+        }
     }
 
     // Update is called once per frame
@@ -70,42 +97,46 @@ public class ShipSubsystems : MonoBehaviour
             shipMovement.thrusterStrengthLeft = 0;
             shipMovement.thrusterStrengthRight = 0;
         }
-        // A thruster will have broken speed if damaged
-        if (!subSystems["downThruster"])
+
+        foreach (SubSystemClass subSystem in subSystems)
         {
-            shipMovement.thrusterStrengthDown = brokenSpeed;
-        }
-        if (!subSystems["upThruster"])
-        {
-            shipMovement.thrusterStrengthUp = brokenSpeed;
-        }
-        if (!subSystems["leftThruster"])
-        {
-            shipMovement.thrusterStrengthLeft = brokenSpeed;
-        }
-        if (!subSystems["rightThruster"])
-        {
-            shipMovement.thrusterStrengthRight = brokenSpeed;
-        }
-        // Rotation locks broken will cause ship to rotate more
-        if (subSystems["rotationLocks"])
-        {
-            shipMovement.maxRotation = rotation;
-            shipMovement.minRotation = -rotation;
-        }
-        else
-        {
-            shipMovement.maxRotation = brokenRotation;
-            shipMovement.minRotation = -brokenRotation;
-        }
-        // Vibration Dampening broken will cause ship to shake more
-        if (subSystems["vibrationDampeners"])
-        {
-            shipMovement.shakeStrength = normalShake;
-        }
-        else
-        {
-            shipMovement.shakeStrength = brokenShake;
+            // A thruster will have broken speed if damaged
+            if (subSystem.type == ShipSubSystemType.DownThruster && !subSystem.status)
+            {
+                shipMovement.thrusterStrengthDown = brokenSpeed;
+            }
+            if (subSystem.type == ShipSubSystemType.UpThruster && !subSystem.status)
+            {
+                shipMovement.thrusterStrengthUp = brokenSpeed;
+            }
+            if (subSystem.type == ShipSubSystemType.LeftThruster && !subSystem.status)
+            {
+                shipMovement.thrusterStrengthLeft = brokenSpeed;
+            }
+            if (subSystem.type == ShipSubSystemType.RightThruster && !subSystem.status)
+            {
+                shipMovement.thrusterStrengthRight = brokenSpeed;
+            }
+            // Rotation locks broken will cause ship to rotate more
+            if (subSystem.type == ShipSubSystemType.RotationLocks && subSystem.status)
+            {
+                shipMovement.maxRotation = rotation;
+                shipMovement.minRotation = -rotation;
+            }
+            else if (subSystem.type == ShipSubSystemType.RotationLocks && !subSystem.status)
+            {
+                shipMovement.maxRotation = brokenRotation;
+                shipMovement.minRotation = -brokenRotation;
+            }
+            // Vibration Dampening broken will cause ship to shake more
+            if (subSystem.type == ShipSubSystemType.VibrationDampeners && subSystem.status)
+            {
+                shipMovement.shakeStrength = normalShake;
+            }
+            else if (subSystem.type == ShipSubSystemType.VibrationDampeners && !subSystem.status)
+            {
+                shipMovement.shakeStrength = brokenShake;
+            }
         }
     }
 }
