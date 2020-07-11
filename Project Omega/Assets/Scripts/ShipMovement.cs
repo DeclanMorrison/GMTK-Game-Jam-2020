@@ -14,6 +14,10 @@ public class ShipMovement : MonoBehaviour
     public float resetTorqueStrength;
     public float moveThreshold;
 
+    public Rigidbody2D background;
+    public float backgroundTorqueStrength;
+    public float backgroundResetStrength;
+
     public float shakeStrength;
     public float minRotation = -45;
     public float maxRotation = 45;
@@ -25,8 +29,8 @@ public class ShipMovement : MonoBehaviour
 
     const float lowerBounds = -4.4f,
         upperBounds = 4.4f,
-        leftBounds = -7.0f,
-        rightBounds = 7.0f;
+        leftBounds = -8.0f,
+        rightBounds = 8.0f;
 
     // Use this for initialization
     void Start()
@@ -70,14 +74,17 @@ public class ShipMovement : MonoBehaviour
         //Rotation for sudden movement
         if (diff.x < -moveThreshold)
         {
-            rb.angularVelocity = torqueStrength;
+            rb.angularVelocity = Mathf.Abs(diff.x) * torqueStrength;
+            background.angularVelocity = Mathf.Abs(diff.x) * backgroundTorqueStrength;
         }
         else if (diff.x > moveThreshold)
         {
-            rb.angularVelocity = -torqueStrength;
+            rb.angularVelocity = -Mathf.Abs(diff.x) * torqueStrength;
+            background.angularVelocity = -Mathf.Abs(diff.x) * backgroundTorqueStrength;
         }
         else
         {
+            //Reset own rotation
             Vector3 currentRotation = transform.localRotation.eulerAngles;
             if (currentRotation.z < 1 || currentRotation.z > 359)
             {
@@ -90,6 +97,20 @@ public class ShipMovement : MonoBehaviour
             else
             {
                 rb.angularVelocity = -resetTorqueStrength;
+            }
+            //Reset start rotations
+            Vector3 currentBackRotation = background.gameObject.transform.localRotation.eulerAngles;
+            if (currentBackRotation.z < 66 && currentBackRotation.z > 64)
+            {
+                background.angularVelocity = 0;
+            }
+            else if (currentBackRotation.z > 245 || currentBackRotation.z < 65)
+            {
+                background.angularVelocity = backgroundResetStrength;
+            }
+            else
+            {
+                background.angularVelocity = -backgroundResetStrength;
             }
         }
     }

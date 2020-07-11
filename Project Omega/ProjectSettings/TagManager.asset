@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Cargo
+  - Ship
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background FX
+    uniqueID: 4089466271
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ship
+    uniqueID: 2864597789
+    locked: 0
+  - name: Foreground FX
+    uniqueID: 2898977579
+    locked: 0
+  - name: UI
+    uniqueID: 1685105125
     locked: 0
