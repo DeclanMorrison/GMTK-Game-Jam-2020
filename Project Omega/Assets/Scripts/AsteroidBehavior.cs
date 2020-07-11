@@ -18,7 +18,7 @@ public class AsteroidBehavior : MonoBehaviour
         rb.velocity = Quaternion.AngleAxis(startAngle, Vector3.forward) * Vector3.up * startVelocity;
         rb.AddTorque(startTorque);
         transform.localScale = Vector3.one * startSize;
-        rb.mass = startSize * 40000;
+        rb.mass = startSize * 4000000;
     }
 
     // Update is called once per frame

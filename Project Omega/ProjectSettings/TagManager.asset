@@ -50,6 +50,9 @@ TagManager:
   - name: Ship
     uniqueID: 2864597789
     locked: 0
+  - name: Engineer/Items
+    uniqueID: 85020569
+    locked: 0
   - name: Foreground FX
     uniqueID: 2898977579
     locked: 0
