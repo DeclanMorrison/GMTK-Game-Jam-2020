@@ -26,4 +26,12 @@ public class AsteroidBehavior : MonoBehaviour
     {
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag.Contains("Ship"))
+        {
+            collision.gameObject.GetComponent<ShipSubsystems>().Damage(startSize, collision.relativeVelocity.magnitude);
+        }
+    }
 }

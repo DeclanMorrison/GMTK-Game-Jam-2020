@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ShipMovement : MonoBehaviour
 {
+    public Camera camera;
+
     public float thrusterStrengthUp;
     public float thrusterStrengthRight;
     public float thrusterStrengthLeft;
@@ -27,7 +29,7 @@ public class ShipMovement : MonoBehaviour
 
     public float speed;
 
-    const float lowerBounds = -4.4f,
+    public float lowerBounds = -4.4f,
         upperBounds = 4.4f,
         leftBounds = -8.0f,
         rightBounds = 8.0f;
@@ -48,7 +50,7 @@ public class ShipMovement : MonoBehaviour
     private void MovePlayer()
     {
         Vector3 mouse = Input.mousePosition;
-        Vector3 adjustedMouse = Camera.main.ScreenToWorldPoint(mouse);
+        Vector3 adjustedMouse = camera.ScreenToWorldPoint(mouse);
         Vector2 diff = adjustedMouse - transform.position;
 
         //Scale difference by thruster strength
@@ -118,39 +120,38 @@ public class ShipMovement : MonoBehaviour
     private void ClampMovement()
     {
         Vector3 currentRotation = transform.localRotation.eulerAngles;
-        if (currentRotation.z > maxRotation && currentRotation.z < 180)
+
+        if (currentRotation.z > maxRotation && currentRotation.z < 180 && rb.angularVelocity > 0)
         {
-            currentRotation.z = maxRotation;
+            rb.angularVelocity = 0;
         }
-        if (currentRotation.z > 180 && currentRotation.z < 360 + minRotation)
+        if (currentRotation.z > 180 && currentRotation.z < 360 + minRotation && rb.angularVelocity < 0)
         {
-            currentRotation.z = 360 + minRotation;
+            rb.angularVelocity = 0;
         }
         transform.localRotation = Quaternion.Euler(currentRotation);
 
-        Vector2 newPosition;
+        Vector2 clampedVelocity = rb.velocity;
 
-        if (transform.position.x > rightBounds)
+        if (transform.position.x > rightBounds && rb.velocity.x > 0)
         {
-            newPosition = new Vector2(rightBounds, transform.position.y);
-            transform.position = newPosition;
+            clampedVelocity.x = 0;
         }
-        else if (transform.position.x < leftBounds)
+        else if (transform.position.x < leftBounds && rb.velocity.x < 0)
         {
-            newPosition = new Vector2(leftBounds, transform.position.y);
-            transform.position = newPosition;
+            clampedVelocity.x = 0;
         }
 
-        if (transform.position.y > upperBounds)
+        if (transform.position.y > upperBounds && rb.velocity.y > 0)
         {
-            newPosition = new Vector2(transform.position.x, upperBounds);
-            transform.position = newPosition;
+            clampedVelocity.y = 0;
         }
-        else if (transform.position.y < lowerBounds)
+        else if (transform.position.y < lowerBounds && rb.velocity.y < 0)
         {
-            newPosition = new Vector2(transform.position.x, lowerBounds);
-            transform.position = newPosition;
+            clampedVelocity.y = 0;
         }
+
+        rb.velocity = clampedVelocity;
     }
 
     Vector2 Shake()
