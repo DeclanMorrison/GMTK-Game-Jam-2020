@@ -6059,6 +6059,11 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[130].y
       value: -12.629517
       objectReference: {fileID: 0}
+    - target: {fileID: 3130294148874812625, guid: 1289789156d1b3345a5d13f6750fbf1c,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: cd1e250bc3cf1774daa5cc180fad194a, type: 3}
     - target: {fileID: 3423475594836550743, guid: 1289789156d1b3345a5d13f6750fbf1c,
         type: 3}
       propertyPath: m_LocalPosition.x

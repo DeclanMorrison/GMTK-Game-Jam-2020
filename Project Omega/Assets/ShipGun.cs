@@ -8,14 +8,16 @@ public class ShipGun : MonoBehaviour
     public KeyCode fireKey = KeyCode.Mouse0;
     public float maxAngle = 15;
     public float rate = 0.5f;
+    public float soundRate = 0.01f;
     public bool loaded = true;
     public GameObject bulletPrefab;
     public ParticleSystem bulletSpewer;
+    private AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,6 +27,10 @@ public class ShipGun : MonoBehaviour
         {
             if (rand.NextDouble() < rate)
             {
+                if (rand.NextDouble() < soundRate)
+                {
+                    audio.Play();
+                }
                 bulletSpewer.Play();
                 GetComponentInParent<ShipSubsystems>().ExpendAmmo(5);
                 Quaternion spawnRot;
