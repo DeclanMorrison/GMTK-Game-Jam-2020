@@ -22,7 +22,7 @@ public class AsteroidSpawner : MonoBehaviour
     public Vector3 spawnOffset;
     public float spawnMultiplier;
 
-    int i = 0;
+    int i = 500;
     public float round = 1;
     int difficulty = 1;
 
