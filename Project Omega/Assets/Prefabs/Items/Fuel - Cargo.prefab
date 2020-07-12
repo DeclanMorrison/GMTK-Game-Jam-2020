@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5995675106196648049}
   - component: {fileID: 5995675106196648050}
   - component: {fileID: 5995675106196648045}
-  m_Layer: 9
-  m_Name: Fuel - Cargo 1
+  m_Layer: 10
+  m_Name: Fuel - Cargo
   m_TagString: Cargo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,5 +162,5 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 2d84dbf8a2173cc4a95908b62a1f7648, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0

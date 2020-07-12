@@ -17,7 +17,7 @@ public class AutoDestoryParticle : MonoBehaviour
     {
         if (ps)
         {
-            if(ps.IsAlive())
+            if(!ps.IsAlive())
             {
                 Destroy(gameObject);
             }

@@ -1,13 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 647c03f0aa5a04e9f8a6eb8126f060de
-=======
-<<<<<<< HEAD
 guid: 6a948bde38521734a97daaf912734544
-=======
-guid: 1ab60fcb2e17c154084cf05893bb4a23
->>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
->>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -39,15 +31,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-<<<<<<< HEAD
-    filterMode: -1
-=======
-<<<<<<< HEAD
-    filterMode: -1
-=======
     filterMode: 0
->>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
->>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -61,15 +45,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-<<<<<<< HEAD
-  spritePixelsToUnits: 100
-=======
-<<<<<<< HEAD
-  spritePixelsToUnits: 100
-=======
   spritePixelsToUnits: 16
->>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
->>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -88,12 +64,6 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-<<<<<<< HEAD
-    textureCompression: 1
-=======
-<<<<<<< HEAD
-    textureCompression: 1
-=======
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -119,8 +89,6 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
->>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
->>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -142,15 +110,7 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
-<<<<<<< HEAD
-  pSDShowRemoveMatteOption: 0
-=======
-<<<<<<< HEAD
-  pSDShowRemoveMatteOption: 0
-=======
   pSDShowRemoveMatteOption: 1
->>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
->>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
   userData: 
   assetBundleName: 
   assetBundleVariant: 
