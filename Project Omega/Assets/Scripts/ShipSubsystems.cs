@@ -42,6 +42,17 @@ public class ShipSubsystems : MonoBehaviour
     public float brokenShake = 4;
     public float normalShake = 1;
 
+    internal void Repair(ShipSubSystemType systemType)
+    {
+        foreach (SubSystemClass system in subSystems)
+        {
+            if (system.type == systemType)
+            {
+                system.status = true;
+            }
+        }
+    }
+
     public int turretAmmo = 0;
     public int missleAmmo = 0;
 
