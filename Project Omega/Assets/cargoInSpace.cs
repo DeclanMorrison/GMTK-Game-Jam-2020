@@ -14,13 +14,13 @@ public class cargoInSpace : MonoBehaviour
     public Vector2 enterVelocity;
     
     public float scaleFactor;
+    private Vector3 endScale;
 
     Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = Quaternion.AngleAxis(startAngle, Vector3.forward) * Vector3.up * startVelocity;
         rb.AddTorque(startTorque);
@@ -35,7 +35,7 @@ public class cargoInSpace : MonoBehaviour
         {
             Debug.Log("ship hit");
             Destroy(GetComponent<ParticleSystem>());
-            transform.localScale = transform.localScale / scaleFactor;
+            transform.localScale = endScale;
             transform.position = other.gameObject.transform.position + offset;
             rb.velocity = other.gameObject.GetComponent<Rigidbody2D>().velocity + enterVelocity;
             rb.rotation = 0;
@@ -47,6 +47,7 @@ public class cargoInSpace : MonoBehaviour
 
     public void EnterSpace()
     {
+        endScale = transform.localScale;
         transform.localScale = transform.localScale * scaleFactor;
         rb.gravityScale = 0;
     }

@@ -35,8 +35,8 @@ public class ShipSubsystems : MonoBehaviour
     public float speed = 2;
     public float brokenSpeed = 0.5f;
 
-    public float brokenRotation = 75;
-    public float rotation = 45;
+    public float brokenTorque = 75;
+    public float torque = 45;
 
     public float brokenShake = 4;
     public float normalShake = 1;
@@ -125,13 +125,11 @@ public class ShipSubsystems : MonoBehaviour
             // Rotation locks broken will cause ship to rotate more
             if (subSystem.type == ShipSubSystemType.RotationLocks && subSystem.status)
             {
-                shipMovement.maxRotation = rotation;
-                shipMovement.minRotation = -rotation;
+                shipMovement.torqueStrength = torque;
             }
             else if (subSystem.type == ShipSubSystemType.RotationLocks && !subSystem.status)
             {
-                shipMovement.maxRotation = brokenRotation;
-                shipMovement.minRotation = -brokenRotation;
+                shipMovement.torqueStrength = brokenShake;
             }
             // Vibration Dampening broken will cause ship to shake more
             if (subSystem.type == ShipSubSystemType.VibrationDampeners && subSystem.status)

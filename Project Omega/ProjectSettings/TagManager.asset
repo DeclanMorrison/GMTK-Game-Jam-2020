@@ -22,7 +22,7 @@ TagManager:
   - Ship Internals
   - Item
   - Membrane
-  - 
+  - OutsideShip
   - 
   - 
   - 
@@ -58,9 +58,15 @@ TagManager:
   - name: Engineer/Items
     uniqueID: 85020569
     locked: 0
+  - name: Internal FX
+    uniqueID: 1258842771
+    locked: 0
+  - name: Outside
+    uniqueID: 1685105125
+    locked: 0
   - name: Foreground FX
     uniqueID: 2898977579
     locked: 0
-  - name: UI
-    uniqueID: 1685105125
+  - name: New Layer
+    uniqueID: 918647497
     locked: 0

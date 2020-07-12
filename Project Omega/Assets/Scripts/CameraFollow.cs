@@ -8,6 +8,14 @@ public class CameraFollow : MonoBehaviour
     public Vector3 offset;
     public float smoothSpeed;
 
+    Camera cam;
+
+    private void Start()
+    {
+        cam = GetComponent<Camera>();
+        cam.cullingMask = ~(1 << LayerMask.NameToLayer("OutsideShip"));
+    }
+
     void FixedUpdate()
     {
         //where we want to go:
