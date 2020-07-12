@@ -75,8 +75,12 @@ public class systemHealth : MonoBehaviour
     {
         if (repairType == RepairType.Wrench)
         {
-            health++;
-            CheckRepaired();
+            if (health < maxHealth)
+            {
+                health++;
+                audio.Play();
+                CheckRepaired();
+            }
         }
     }
 

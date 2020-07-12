@@ -10,6 +10,7 @@ public class AsteroidBehavior : MonoBehaviour
     public float startSize;
 
     private Rigidbody2D rb;
+    private AudioSource audio;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class AsteroidBehavior : MonoBehaviour
         rb.AddTorque(startTorque);
         transform.localScale = Vector3.one * startSize;
         rb.mass = startSize * 4000000;
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class AsteroidBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains("Ship"))
         {
+            audio.Play();
             collision.gameObject.GetComponent<ShipSubsystems>().Damage(startSize, collision.relativeVelocity.magnitude);
         }
     }
