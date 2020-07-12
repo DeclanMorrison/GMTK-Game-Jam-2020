@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Manu.unity
+    guid: 6785cda204abf8142aebae959c828f7f
+  - enabled: 1
+    path: Assets/Scenes/EngineerAndShip.unity
+    guid: c5c582ba35d280a449f0506ffaf38699
   m_configObjects: {}

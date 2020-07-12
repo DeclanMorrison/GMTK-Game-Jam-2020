@@ -12,7 +12,7 @@ public class cargoInSpace : MonoBehaviour
 
     public Vector3 offset;
     public Vector2 enterVelocity;
-
+    
     public float scaleFactor;
 
     Rigidbody2D rb;
