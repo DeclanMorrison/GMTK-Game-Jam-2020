@@ -27,9 +27,15 @@ public class systemHealth : MonoBehaviour
     public RepairType repairType;
     public ShipSubSystemType systemType;
 
+    public Sprite functioningSprite;
+    public Sprite brokenSprite;
+
+    SpriteRenderer spriteRender;
+
     private void Start()
     {
         health = maxHealth;
+        spriteRender = GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -49,12 +55,14 @@ public class systemHealth : MonoBehaviour
     {
         if (health == maxHealth)
         {
+            spriteRender.sprite = functioningSprite;
             GetComponentInParent<ShipSubsystems>().Repair(systemType);
         }
     }
 
     public void Damage()
     {
+        spriteRender.sprite = brokenSprite;
         health = 0;
     }
 
