@@ -2398,6 +2398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2895786554082578364, guid: 045c302b45fa4854280f5cb72d11ccd6, type: 3}
+    - {fileID: 2895786554082578365, guid: 045c302b45fa4854280f5cb72d11ccd6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 045c302b45fa4854280f5cb72d11ccd6, type: 3}
 --- !u!1 &1070160535
 GameObject:
@@ -4770,31 +4771,6 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 1243949343}
-    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
-        type: 3}
-      propertyPath: throwAngle.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
-        type: 3}
-      propertyPath: throwVelocity
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
-        type: 3}
-      propertyPath: throwAngle.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5193986167621158042, guid: b3de2e6f3f37b2541894d67f4e9c957b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5193986167994735294, guid: b3de2e6f3f37b2541894d67f4e9c957b,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 5193986169500492225, guid: b3de2e6f3f37b2541894d67f4e9c957b,
         type: 3}
       propertyPath: ship
@@ -4944,10 +4920,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2732632684854223063, guid: 8969898cb27c46943a23a0bc75a3dc25,
+    - target: {fileID: 2732632684854223061, guid: 8969898cb27c46943a23a0bc75a3dc25,
         type: 3}
-      propertyPath: m_Constraints
-      value: 0
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 54e6f19da60af48eba3eff288c4f6424,
+        type: 3}
+    - target: {fileID: 2732632684854223061, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430813774975545633, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: subSystems.Array.data[0].healthScript
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430813774975545633, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: brokenShake
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430813774975545633, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: subSystems.Array.data[5].status
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}

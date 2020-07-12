@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
 
     //fixing
     public KeyCode fixKey = KeyCode.None;
+    public GameObject wrench;
 
 
     void Start()
@@ -45,12 +46,14 @@ public class Player : MonoBehaviour
         {
             transform.rotation = quaternion.Euler(0, 3.14159f, 0);
             pickup.throwAngle.x = 1f;
+            wrench.GetComponent<WrenchBehavior>().left = true;
         }
         else if (horMoveInput < 0)
         {
             transform.rotation = quaternion.Euler(0, 0, 0);
             pickup.throwAngle.x = -1f;
-        }
+            wrench.GetComponent<WrenchBehavior>().left = false;
+        }   
 
 
 
@@ -87,9 +90,11 @@ public class Player : MonoBehaviour
         }
 
         //swinging wrench
-        if(Input.GetKeyDown(fixKey))
+        if(Input.GetKeyDown(fixKey) && pickup.carriedObject == null)
         {
             animator.SetBool("isWalking", true);
+            wrench.SetActive(true);
+            wrench.GetComponent<WrenchBehavior>().Swing();
         }
 
     }
