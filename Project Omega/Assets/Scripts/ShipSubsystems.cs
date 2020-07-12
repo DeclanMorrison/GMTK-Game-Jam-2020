@@ -29,6 +29,8 @@ public class ShipSubsystems : MonoBehaviour
     // Start is called before the first frame update
     public List<SubSystemClass> subSystems = new List<SubSystemClass>();
 
+    public AlertDisplay alertDisplay;
+
     public int health = 100;
     public float damageFactor = 1.5f;
 
@@ -148,6 +150,15 @@ public class ShipSubsystems : MonoBehaviour
             else
             {
                 GetComponentInChildren<ShipGun>().loaded = false;
+            }
+            //Can't see alerts if no radar
+            if (subSystem.type == ShipSubSystemType.Radar && subSystem.status)
+            {
+                alertDisplay.isWorking = true;
+            }
+            else if (subSystem.type == ShipSubSystemType.Radar && !subSystem.status)
+            {
+                alertDisplay.isWorking = false;
             }
         }
     }

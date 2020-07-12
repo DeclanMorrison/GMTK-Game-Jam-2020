@@ -1479,7 +1479,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3d5a36a20dbba7445849bfac1f296907, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4208ababdb32f664697df699b7b0ee14, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.75
   m_Pitch: 1
@@ -2089,6 +2089,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 373132272}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1113498061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 430911779010119789, guid: 051b43d33cfd4b3418344531cba04dea,
+    type: 3}
+  m_PrefabInstance: {fileID: 105264939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bcb63b3033394479bc9aa13da7000e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1127858805 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3681896708862171191, guid: 8969898cb27c46943a23a0bc75a3dc25,
@@ -3118,5 +3130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4430813774975545633, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: alertDisplay
+      value: 
+      objectReference: {fileID: 1113498061}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}
