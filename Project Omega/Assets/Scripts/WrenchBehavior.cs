@@ -38,7 +38,6 @@ public class WrenchBehavior : MonoBehaviour
         if (collision.gameObject.tag.Contains("Subsystem"))
         {
             collision.gameObject.GetComponent<systemHealth>().Repair();
-            gameObject.SetActive(false);
         }
     }
 
