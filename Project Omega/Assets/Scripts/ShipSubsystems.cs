@@ -12,8 +12,6 @@ public enum ShipSubSystemType
     RotationLocks,
     VibrationDampeners,
     Radar,
-    Turret,
-    Missles,
     Fuel,
     Ammo
 }
@@ -143,6 +141,15 @@ public class ShipSubsystems : MonoBehaviour
             else if (subSystem.type == ShipSubSystemType.VibrationDampeners && !subSystem.status)
             {
                 shipMovement.shakeStrength = brokenShake;
+            }
+            //Can't fire if out of ammo
+            if (subSystem.type == ShipSubSystemType.Ammo && subSystem.status)
+            {
+                GetComponentInChildren<ShipGun>().loaded = true;
+            }
+            else
+            {
+                GetComponentInChildren<ShipGun>().loaded = false;
             }
         }
     }
