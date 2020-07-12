@@ -23,7 +23,7 @@ public class AsteroidSpawner : MonoBehaviour
     public float spawnMultiplier;
 
     int i = 0;
-    float round = 1;
+    public float round = 1;
     int difficulty = 1;
 
 
@@ -60,12 +60,26 @@ public class AsteroidSpawner : MonoBehaviour
         {
             if(rand.NextDouble()*100 < asteroidType.spawnRate*spawnMultiplier)
             {
-                spawnLocation.y = rand.Next(spawnBottom, spawnTop);
+                spawnLocation.y = (float)rand.NextDouble() * -100f;
                 spawnLocation.x = spawnLocation.y / spawnSlope;
                 GameObject newAsteroid = Instantiate(asteroidType.asteroidObject, spawnLocation + spawnOffset, transform.rotation);
-                newAsteroid.GetComponent<AsteroidBehavior>().startVelocity = rand.Next(asteroidType.startingSpeed/5, asteroidType.startingSpeed);
-                newAsteroid.GetComponent<AsteroidBehavior>().startAngle = rand.Next(55, 85);
-                newAsteroid.GetComponent<AsteroidBehavior>().startTorque = rand.Next(-30, 30);
+                AsteroidBehavior asteroid = newAsteroid.GetComponent<AsteroidBehavior>();
+                cargoInSpace cargo = newAsteroid.GetComponent<cargoInSpace>();
+
+                if (asteroid)
+                {
+                    newAsteroid.GetComponent<AsteroidBehavior>().startVelocity = rand.Next(asteroidType.startingSpeed / 5, asteroidType.startingSpeed);
+                    newAsteroid.GetComponent<AsteroidBehavior>().startAngle = rand.Next(55, 85);
+                    newAsteroid.GetComponent<AsteroidBehavior>().startTorque = rand.Next(-30, 30);
+                }
+
+                if (cargo)
+                {
+                    newAsteroid.GetComponent<cargoInSpace>().startVelocity = rand.Next(asteroidType.startingSpeed / 5, asteroidType.startingSpeed);
+                    newAsteroid.GetComponent<cargoInSpace>().startAngle = rand.Next(55, 85);
+                    newAsteroid.GetComponent<cargoInSpace>().startTorque = rand.Next(-30, 30);
+                }
+               
             }
         }
 

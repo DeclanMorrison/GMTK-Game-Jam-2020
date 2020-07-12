@@ -129,7 +129,7 @@ public class ShipSubsystems : MonoBehaviour
             }
             else if (subSystem.type == ShipSubSystemType.RotationLocks && !subSystem.status)
             {
-                shipMovement.torqueStrength = brokenShake;
+                shipMovement.torqueStrength = brokenShake;  
             }
             // Vibration Dampening broken will cause ship to shake more
             if (subSystem.type == ShipSubSystemType.VibrationDampeners && subSystem.status)
