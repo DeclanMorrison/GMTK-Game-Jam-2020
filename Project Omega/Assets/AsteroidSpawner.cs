@@ -23,7 +23,7 @@ public class AsteroidSpawner : MonoBehaviour
     public float spawnMultiplier;
 
     int i = 0;
-    float round = 1;
+    public float round = 1;
     int difficulty = 1;
 
 
