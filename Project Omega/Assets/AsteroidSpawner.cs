@@ -60,7 +60,7 @@ public class AsteroidSpawner : MonoBehaviour
         {
             if(rand.NextDouble()*100 < asteroidType.spawnRate*spawnMultiplier)
             {
-                spawnLocation.y = rand.Next(spawnBottom, spawnTop);
+                spawnLocation.y = (float)rand.NextDouble() * -100f;
                 spawnLocation.x = spawnLocation.y / spawnSlope;
                 GameObject newAsteroid = Instantiate(asteroidType.asteroidObject, spawnLocation + spawnOffset, transform.rotation);
                 newAsteroid.GetComponent<AsteroidBehavior>().startVelocity = rand.Next(asteroidType.startingSpeed/5, asteroidType.startingSpeed);
