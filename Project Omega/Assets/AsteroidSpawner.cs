@@ -68,5 +68,7 @@ public class AsteroidSpawner : MonoBehaviour
                 newAsteroid.GetComponent<AsteroidBehavior>().startTorque = rand.Next(-30, 30);
             }
         }
+
+
     }
 }

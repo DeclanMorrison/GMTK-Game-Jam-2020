@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3f7635a8c54e98043b621f2164ca26b4
+=======
+guid: 70b6d478f5c02b94e8cc6581a6b6ee2c
+>>>>>>> cf2b9e5b23987334caf0b1ad8a58d75b83e0e29a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -31,7 +35,11 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
     filterMode: 0
+=======
+    filterMode: -1
+>>>>>>> cf2b9e5b23987334caf0b1ad8a58d75b83e0e29a
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -45,7 +53,11 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   spritePixelsToUnits: 16
+=======
+  spritePixelsToUnits: 100
+>>>>>>> cf2b9e5b23987334caf0b1ad8a58d75b83e0e29a
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -64,6 +76,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
@@ -89,6 +102,9 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
+=======
+    textureCompression: 1
+>>>>>>> cf2b9e5b23987334caf0b1ad8a58d75b83e0e29a
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,7 +126,11 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
+<<<<<<< HEAD
   pSDShowRemoveMatteOption: 1
+=======
+  pSDShowRemoveMatteOption: 0
+>>>>>>> cf2b9e5b23987334caf0b1ad8a58d75b83e0e29a
   userData: 
   assetBundleName: 
   assetBundleVariant: 
