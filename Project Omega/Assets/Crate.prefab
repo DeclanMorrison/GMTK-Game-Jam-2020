@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5275757656287453197}
   - component: {fileID: 5275757656287453196}
   - component: {fileID: 5275757656287453199}
-  - component: {fileID: 510345923832883766}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Cargo
@@ -71,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 85020569
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: -6794933166906336193, guid: e9ec14f7b04262a49874b2104844c95c,
     type: 3}
@@ -132,16 +131,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.62518334, y: 0.6246519}
   m_EdgeRadius: 0
---- !u!114 &510345923832883766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5275757656287453198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e8b6b129016ca94b9ae35be77858e3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemType: 0
