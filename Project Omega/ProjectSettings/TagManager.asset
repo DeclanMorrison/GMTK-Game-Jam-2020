@@ -8,6 +8,7 @@ TagManager:
   - Cargo
   - Ship
   - Subsystem
+  - Asteroid
   layers:
   - Default
   - TransparentFX
