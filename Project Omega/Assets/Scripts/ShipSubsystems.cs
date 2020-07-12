@@ -13,7 +13,9 @@ public enum ShipSubSystemType
     VibrationDampeners,
     Radar,
     Turret,
-    Missles
+    Missles,
+    Fuel,
+    Ammo
 }
 
 [Serializable]
@@ -31,7 +33,6 @@ public class ShipSubsystems : MonoBehaviour
 
     public int health = 100;
     public float damageFactor = 1.5f;
-    public bool fueled = true;
 
     public float speed = 2;
     public float brokenSpeed = 0.5f;
@@ -53,9 +54,6 @@ public class ShipSubsystems : MonoBehaviour
         }
     }
 
-    public int turretAmmo = 0;
-    public int missleAmmo = 0;
-
     private ShipMovement shipMovement;
     
     void Start()
@@ -73,7 +71,7 @@ public class ShipSubsystems : MonoBehaviour
             Array values = Enum.GetValues(typeof(ShipSubSystemType));
             System.Random rand = new System.Random();
  
-            int randomSystem = rand.Next(values.Length);
+            int randomSystem = rand.Next(values.Length - 2);
             if (subSystems[randomSystem].status)
             {
                 subSystems[randomSystem].status = false;
@@ -94,24 +92,21 @@ public class ShipSubsystems : MonoBehaviour
 
     private void StateEffects()
     {
-        // If unfueled all thrusters will be zero
-        if (fueled)
-        {
-            shipMovement.thrusterStrengthDown = speed;
-            shipMovement.thrusterStrengthUp = speed;
-            shipMovement.thrusterStrengthLeft = speed;
-            shipMovement.thrusterStrengthRight = speed;
-        }
-        else
-        {
-            shipMovement.thrusterStrengthDown = 0;
-            shipMovement.thrusterStrengthUp = 0;
-            shipMovement.thrusterStrengthLeft = 0;
-            shipMovement.thrusterStrengthRight = 0;
-        }
+        shipMovement.thrusterStrengthDown = speed;
+        shipMovement.thrusterStrengthUp = speed;
+        shipMovement.thrusterStrengthLeft = speed;
+        shipMovement.thrusterStrengthRight = speed;
 
         foreach (SubSystemClass subSystem in subSystems)
         {
+            // If unfueled all thrusters will be zero
+            if (subSystem.type == ShipSubSystemType.Fuel && !subSystem.status)
+            {
+                shipMovement.thrusterStrengthDown = 0;
+                shipMovement.thrusterStrengthUp = 0;
+                shipMovement.thrusterStrengthLeft = 0;
+                shipMovement.thrusterStrengthRight = 0;
+            }
             // A thruster will have broken speed if damaged
             if (subSystem.type == ShipSubSystemType.DownThruster && !subSystem.status)
             {
@@ -148,6 +143,38 @@ public class ShipSubsystems : MonoBehaviour
             else if (subSystem.type == ShipSubSystemType.VibrationDampeners && !subSystem.status)
             {
                 shipMovement.shakeStrength = brokenShake;
+            }
+        }
+    }
+
+    internal void ExpendFuel(int amount)
+    {
+        foreach (SubSystemClass subSystem in subSystems)
+        {
+            if (subSystem.type == ShipSubSystemType.Fuel && subSystem.healthScript.health >= amount)
+            {
+                subSystem.healthScript.health -= amount;
+                if (subSystem.healthScript.health == 0)
+                {
+                    subSystem.healthScript.Damage();
+                    subSystem.status = false;
+                }
+            }
+        }
+    }
+
+    internal void ExpendAmmo(int amount)
+    {
+        foreach (SubSystemClass subSystem in subSystems)
+        {
+            if (subSystem.type == ShipSubSystemType.Ammo && subSystem.healthScript.health >= amount)
+            {
+                subSystem.healthScript.health -= amount;
+                if (subSystem.healthScript.health == 0)
+                {
+                    subSystem.healthScript.Damage();
+                    subSystem.status = false;
+                }
             }
         }
     }

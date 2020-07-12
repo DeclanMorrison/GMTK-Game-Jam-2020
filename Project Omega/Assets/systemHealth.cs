@@ -20,8 +20,10 @@ public enum RepairType
 
 public class systemHealth : MonoBehaviour
 {
-    public int maxHealth;
-    public int health;
+    public int maxHealth = 3;
+    public int health = 3;
+    public int healAmount = 1;
+    public int healMin = 3;
 
     public ItemType acceptedCargo;
     public RepairType repairType;
@@ -42,9 +44,9 @@ public class systemHealth : MonoBehaviour
     {
         if (repairType == RepairType.Resource)
         {
-            if (health < maxHealth && other.gameObject.tag == "Cargo" && other.gameObject.GetComponent<ItemClassification>().itemType == acceptedCargo)
+            if ((health + healAmount) <= maxHealth && other.gameObject.tag == "Cargo" && other.gameObject.GetComponent<ItemClassification>().itemType == acceptedCargo)
             {
-                health++;
+                health += healAmount;
                 CheckRepaired();
                 Destroy(other.gameObject);
             }
@@ -53,7 +55,8 @@ public class systemHealth : MonoBehaviour
 
     private void CheckRepaired()
     {
-        if (health == maxHealth)
+        if ((repairType == RepairType.Wrench && health == maxHealth) ||
+            (repairType == RepairType.Resource && health >= healMin))
         {
             spriteRender.sprite = functioningSprite;
             GetComponentInParent<ShipSubsystems>().Repair(systemType);

@@ -76,11 +76,13 @@ public class ShipMovement : MonoBehaviour
         //Rotation for sudden movement
         if (diff.x < -moveThreshold)
         {
+            GetComponent<ShipSubsystems>().ExpendFuel(1);
             rb.angularVelocity = Mathf.Abs(diff.x) * torqueStrength;
             background.angularVelocity = Mathf.Abs(diff.x) * backgroundTorqueStrength;
         }
         else if (diff.x > moveThreshold)
         {
+            GetComponent<ShipSubsystems>().ExpendFuel(1);
             rb.angularVelocity = -Mathf.Abs(diff.x) * torqueStrength;
             background.angularVelocity = -Mathf.Abs(diff.x) * backgroundTorqueStrength;
         }
