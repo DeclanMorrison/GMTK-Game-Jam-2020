@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
         }
 
         //swinging wrench
-        if(Input.GetKeyDown(fixKey))
+        if(Input.GetKeyDown(fixKey) && pickup.carriedObject == null)
         {
             animator.SetBool("isWalking", true);
             wrench.SetActive(true);
