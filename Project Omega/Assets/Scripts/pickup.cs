@@ -54,6 +54,7 @@ public class Pickup : MonoBehaviour
             {
                 carriedObject = closestObject;
                 carriedCollider = carriedObject.GetComponent<BoxCollider2D>();
+                carriedObject.layer = LayerMask.NameToLayer("Default");
                 //carriedCollider.enabled = !carriedCollider.enabled;
             }
             Debug.Log("pickup terminated");
@@ -65,6 +66,7 @@ public class Pickup : MonoBehaviour
             Debug.Log("Throw initiated");
             carriedObject.GetComponent<Rigidbody2D>().velocity = ship.velocity;
             carriedObject.GetComponent<Rigidbody2D>().velocity += throwAngle * throwVelocity;
+            carriedObject.layer = LayerMask.NameToLayer("Item");
             //carriedCollider.enabled = !carriedCollider.enabled;
             carriedObject = null;
             carriedCollider = null;

@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3e483258ae7174c06a5f2296557874ee
+=======
+<<<<<<< HEAD
+guid: ce41fafe4a9bd3b43873b368eff8b082
+=======
+guid: c4c1981bf04e37141939da2f102432ab
+>>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
+>>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -31,7 +39,15 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
+<<<<<<< HEAD
     filterMode: -1
+=======
+<<<<<<< HEAD
+    filterMode: -1
+=======
+    filterMode: 0
+>>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
+>>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -45,7 +61,15 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
   spritePixelsToUnits: 100
+=======
+<<<<<<< HEAD
+  spritePixelsToUnits: 100
+=======
+  spritePixelsToUnits: 16
+>>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
+>>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -64,7 +88,39 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<< HEAD
     textureCompression: 1
+=======
+<<<<<<< HEAD
+    textureCompression: 1
+=======
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+>>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
+>>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -86,7 +142,15 @@ TextureImporter:
     secondaryTextures: []
   spritePackingTag: 
   pSDRemoveMatte: 0
+<<<<<<< HEAD
   pSDShowRemoveMatteOption: 0
+=======
+<<<<<<< HEAD
+  pSDShowRemoveMatteOption: 0
+=======
+  pSDShowRemoveMatteOption: 1
+>>>>>>> ef606fe3232f6a3b8cb4fce989efdad359da5da3
+>>>>>>> 48bd0496454910831f1b481e013adf51ec5e971c
   userData: 
   assetBundleName: 
   assetBundleVariant: 

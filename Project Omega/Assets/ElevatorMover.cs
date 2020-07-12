@@ -24,11 +24,11 @@ public class ElevatorMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (mouseInput && transform.localPosition.y < 0)
+        if (mouseInput && transform.localPosition.y < -0.05f)
         {
             transform.localPosition = transform.localPosition + Vector3.up * moveSpeed;
         }
-        else if (!mouseInput && transform.localPosition.y > -4)
+        else if (!mouseInput && transform.localPosition.y > -3.95f)
         {
             transform.localPosition = transform.localPosition + Vector3.down * moveSpeed;
         }
