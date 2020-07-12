@@ -28,6 +28,7 @@ public class systemHealth : MonoBehaviour
     public ItemType acceptedCargo;
     public RepairType repairType;
     public ShipSubSystemType systemType;
+    public AudioSource audio;
 
     public Sprite functioningSprite;
     public Sprite brokenSprite;
@@ -46,6 +47,7 @@ public class systemHealth : MonoBehaviour
         {
             if ((health + healAmount) <= maxHealth && other.gameObject.tag == "Cargo" && other.gameObject.GetComponent<ItemClassification>().itemType == acceptedCargo)
             {
+                audio.Play();
                 health += healAmount;
                 CheckRepaired();
                 Destroy(other.gameObject);

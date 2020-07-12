@@ -8,7 +8,9 @@ public class ShipGun : MonoBehaviour
     public KeyCode fireKey = KeyCode.Mouse0;
     public float maxAngle = 15;
     public float rate = 0.5f;
+    public bool loaded = true;
     public GameObject bulletPrefab;
+    public ParticleSystem bulletSpewer;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +21,14 @@ public class ShipGun : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetKey(fireKey))
+        if (Input.GetKey(fireKey) && loaded)
         {
             if (rand.NextDouble() < rate)
             {
+                bulletSpewer.Play();
+                GetComponentInParent<ShipSubsystems>().ExpendAmmo(5);
                 Quaternion spawnRot;
-                if (rand.NextDouble() < rate)
+                if (rand.NextDouble() < 0.5)
                 {
                     spawnRot = transform.rotation * Quaternion.Euler(new Vector3(0, 0, (float)rand.NextDouble() * maxAngle));
                 }
