@@ -25,11 +25,11 @@ public class WrenchBehavior : MonoBehaviour
     {
         if (left)
         {
-            transform.Rotate(Vector3.forward, Time.deltaTime * speed);
+            transform.Rotate(Vector3.forward, -Time.deltaTime * speed);
         }
         else
         {
-            transform.Rotate(Vector3.forward, -Time.deltaTime * speed);
+            transform.Rotate(Vector3.forward, Time.deltaTime * speed);
         }
     }
 

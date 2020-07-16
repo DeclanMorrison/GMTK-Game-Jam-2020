@@ -372,6 +372,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &182307645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182307647}
+  - component: {fileID: 182307646}
+  m_Layer: 0
+  m_Name: Score Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &182307646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182307645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43234c853359a964facbb90493d9df7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePerSecond: 1
+  scoreDisplay: {fileID: 1563635544}
+--- !u!4 &182307647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182307645}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 354.70535, y: 265.8069, z: -613.4859}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &208424880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1754,15 +1799,15 @@ MonoBehaviour:
     startingSpeed: 25
   - asteroidObject: {fileID: 6244360143728362920, guid: 168726e59174e314d9a8aeb2084b9cb0,
       type: 3}
-    spawnRate: 0.5
+    spawnRate: 0.1
     startingSpeed: 50
   - asteroidObject: {fileID: 1060905426614507508, guid: b5dae2e68909e3d4ea23a6317f4a2ae4,
       type: 3}
-    spawnRate: 0.5
+    spawnRate: 0.1
     startingSpeed: 50
   - asteroidObject: {fileID: 8741663317192358543, guid: a0ff95e602d57a644ac2fdd51efca442,
       type: 3}
-    spawnRate: 0.8
+    spawnRate: 0.15
     startingSpeed: 50
   spawnBottom: -100
   spawnTop: 0
@@ -2425,6 +2470,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 967158787}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1563635544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5175030686029052597, guid: 051b43d33cfd4b3418344531cba04dea,
+    type: 3}
+  m_PrefabInstance: {fileID: 105264939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1623023119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3045,6 +3102,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 416790068, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416790068, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}
+      propertyPath: m_Name
+      value: Cover Plate
+      objectReference: {fileID: 0}
     - target: {fileID: 416790070, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}
       propertyPath: m_Sprite
       value: 

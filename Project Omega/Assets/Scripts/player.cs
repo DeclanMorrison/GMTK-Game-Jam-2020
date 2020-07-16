@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class player : MonoBehaviour
 {
 
     //game objects
     private Rigidbody2D rb;
     public Rigidbody2D ship;
-    public Pickup pickup;
+    public pickup pickup;
     private Animator animator;
 
     //horizontal movement
