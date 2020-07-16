@@ -226,7 +226,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 430911779532043331}
   m_HandleRect: {fileID: 0}
@@ -251,7 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroidSpawner: {fileID: 0}
-  slider: {fileID: 430911779010119788}
   isWorking: 1
 --- !u!1 &430911779360365891
 GameObject:
@@ -405,8 +404,8 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_Interactable: 0
+  m_TargetGraphic: {fileID: 430911778406384589}
   m_FillRect: {fileID: 430911778406384590}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
@@ -430,7 +429,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shipSubsystem: {fileID: 0}
-  slider: {fileID: 430911779467282581}
 --- !u!1 &430911779532043332
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +786,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4.6}
+  m_AnchoredPosition: {x: 0, y: 1.05}
   m_SizeDelta: {x: 204.61526, y: 37.722015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2068108765453650619
@@ -867,7 +865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -43.3}
+  m_AnchoredPosition: {x: 0, y: -40.55}
   m_SizeDelta: {x: 204.61526, y: 37.722015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7509312236145080194

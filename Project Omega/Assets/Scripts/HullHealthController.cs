@@ -8,11 +8,12 @@ public class HullHealthController : MonoBehaviour
 {
 
     public ShipSubsystems shipSubsystem;
-    public Slider slider;
+    Slider slider;
 
     // Start is called before the first frame update
     void Start()
     {
+        slider = GetComponent<Slider>();
         slider.maxValue = shipSubsystem.health;
         slider.value = shipSubsystem.health;
     }

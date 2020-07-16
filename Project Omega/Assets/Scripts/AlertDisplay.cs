@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class AlertDisplay : MonoBehaviour
 {
     public AsteroidSpawner asteroidSpawner;
-    public Slider slider;
+    Slider slider;
     public bool isWorking = true;
     System.Random rand = new System.Random();
 
     void Start()
     {
+        slider = GetComponent<Slider>();
         slider.maxValue = 8;
     }
 
