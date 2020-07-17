@@ -9,6 +9,7 @@ TagManager:
   - Ship
   - Subsystem
   - Asteroid
+  - Canvas
   layers:
   - Default
   - TransparentFX

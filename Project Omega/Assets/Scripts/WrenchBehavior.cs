@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class WrenchBehavior : MonoBehaviour
 {
@@ -25,16 +26,17 @@ public class WrenchBehavior : MonoBehaviour
     {
         if (left)
         {
-            transform.Rotate(Vector3.forward, -Time.deltaTime * speed);
+            transform.Rotate(Vector3.forward, Time.deltaTime * speed);
         }
         else
         {
-            transform.Rotate(Vector3.forward, Time.deltaTime * speed);
+            transform.Rotate(Vector3.forward, -Time.deltaTime * speed);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.tag.Contains("Subsystem"))
         {
             collision.gameObject.GetComponent<systemHealth>().Repair();
