@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 430911779467282583}
   - component: {fileID: 430911779467282581}
   - component: {fileID: 430911779467282582}
+  - component: {fileID: 3875684483018727510}
   m_Layer: 0
   m_Name: Hull
   m_TagString: Untagged
@@ -431,6 +432,25 @@ MonoBehaviour:
   shipSubsystem: {fileID: 0}
   lostHealthChunk: {fileID: 0}
   breakVelocity: {x: 10, y: 100}
+--- !u!95 &3875684483018727510
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 430911779467282664}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8c7b268e5eb7a904f8b41c87a0003299, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &430911779532043332
 GameObject:
   m_ObjectHideFlags: 0
