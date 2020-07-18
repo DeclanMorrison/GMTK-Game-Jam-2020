@@ -46,8 +46,7 @@ public class HullHealthController : MonoBehaviour
             Destroy(newLostHealthChunk, 3);
 
             //trigger a opacity flash
-            animator.Play("default");
-            animator.Play("UI_opacityPulse");
+            animator.SetTrigger("Pulse");
         }
 
         //update the slider value
