@@ -29,14 +29,16 @@ public class ShipSubsystems : MonoBehaviour
     // Start is called before the first frame update
     public List<SubSystemClass> subSystems = new List<SubSystemClass>();
 
+    public AlertDisplay alertDisplay;
+
     public int health = 100;
     public float damageFactor = 1.5f;
 
     public float speed = 2;
     public float brokenSpeed = 0.5f;
 
-    public float brokenRotation = 75;
-    public float rotation = 45;
+    public float brokenTorque = 75;
+    public float torque = 45;
 
     public float brokenShake = 4;
     public float normalShake = 1;
@@ -125,13 +127,11 @@ public class ShipSubsystems : MonoBehaviour
             // Rotation locks broken will cause ship to rotate more
             if (subSystem.type == ShipSubSystemType.RotationLocks && subSystem.status)
             {
-                shipMovement.maxRotation = rotation;
-                shipMovement.minRotation = -rotation;
+                shipMovement.torqueStrength = torque;
             }
             else if (subSystem.type == ShipSubSystemType.RotationLocks && !subSystem.status)
             {
-                shipMovement.maxRotation = brokenRotation;
-                shipMovement.minRotation = -brokenRotation;
+                shipMovement.torqueStrength = brokenShake;  
             }
             // Vibration Dampening broken will cause ship to shake more
             if (subSystem.type == ShipSubSystemType.VibrationDampeners && subSystem.status)
@@ -150,6 +150,15 @@ public class ShipSubsystems : MonoBehaviour
             else
             {
                 GetComponentInChildren<ShipGun>().loaded = false;
+            }
+            //Can't see alerts if no radar
+            if (subSystem.type == ShipSubSystemType.Radar && subSystem.status)
+            {
+                alertDisplay.isWorking = true;
+            }
+            else if (subSystem.type == ShipSubSystemType.Radar && !subSystem.status)
+            {
+                alertDisplay.isWorking = false;
             }
         }
     }

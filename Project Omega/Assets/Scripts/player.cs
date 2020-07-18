@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class player : MonoBehaviour
 {
 
     //game objects
     private Rigidbody2D rb;
     public Rigidbody2D ship;
-    public Pickup pickup;
+    public pickup pickup;
     private Animator animator;
 
     //horizontal movement
@@ -42,17 +42,17 @@ public class Player : MonoBehaviour
         horMoveInput = Input.GetAxisRaw("Horizontal"); // Gets input for left/right movement.  returns -1, 0 , 1
 
         //flip things vased on direction of move
-        if (horMoveInput > 0)
+        if (horMoveInput > 0) //move to right
         {
             transform.rotation = quaternion.Euler(0, 3.14159f, 0);
             pickup.throwAngle.x = 1f;
-            wrench.GetComponent<WrenchBehavior>().left = true;
+            wrench.GetComponent<WrenchBehavior>().left = false;
         }
-        else if (horMoveInput < 0)
+        else if (horMoveInput < 0) //move to left
         {
             transform.rotation = quaternion.Euler(0, 0, 0);
             pickup.throwAngle.x = -1f;
-            wrench.GetComponent<WrenchBehavior>().left = false;
+            wrench.GetComponent<WrenchBehavior>().left = true;
         }   
 
 
