@@ -357,7 +357,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 1, g: 0.15566039, b: 0.26253468, a: 1}
-      maxColor: {r: 0.8962264, g: 0.58096445, b: 0.080322154, a: 1}
+      maxColor: {r: 0.8444987, g: 0.8980392, b: 0.07843137, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -881,7 +881,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 1
+      value: 2.01
       mode: 0
       spread: 0
       speed:
