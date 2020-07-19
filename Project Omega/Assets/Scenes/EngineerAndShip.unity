@@ -2714,6 +2714,16 @@ PrefabInstance:
       propertyPath: throwAngle.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
+        type: 3}
+      propertyPath: highlight
+      value: 
+      objectReference: {fileID: 2100000, guid: 7fea2d0d9ccca0d40b8b016474f42444, type: 2}
+    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
+        type: 3}
+      propertyPath: defaultCargoMaterial
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5193986169500492225, guid: b3de2e6f3f37b2541894d67f4e9c957b,
         type: 3}
       propertyPath: ship
