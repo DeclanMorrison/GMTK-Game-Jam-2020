@@ -36,15 +36,19 @@ public class cargoInSpace : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        sparkle.transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.z * -1.0f);
+    }
+
+
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.tag.Contains("Ship"))
         {
-            Destroy(GetComponent<ParticleSystem>());
+            Destroy(sparkle);
             transform.localScale = endScale;
-            sparkle.transform.localScale = endScale;
-
             transform.position = other.gameObject.transform.position + offset;
             rb.velocity = other.gameObject.GetComponent<Rigidbody2D>().velocity + enterVelocity;
             rb.rotation = 0;
