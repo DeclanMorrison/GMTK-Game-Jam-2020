@@ -357,7 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireKey: 323
   maxAngle: 10
-  rate: 0.75
+  rate: 0
   soundRate: 0.5
   loaded: 1
   bulletPrefab: {fileID: 8788191579844514386, guid: 38ed9d86534e4a646b48f39ba0733d22,
@@ -5521,6 +5521,7 @@ MonoBehaviour:
   - type: 8
     status: 1
     healthScript: {fileID: 3681896708862171189}
+  alertDisplay: {fileID: 0}
   health: 100
   damageFactor: 1
   speed: 2
