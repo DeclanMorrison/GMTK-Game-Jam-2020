@@ -34,11 +34,13 @@ public class systemHealth : MonoBehaviour
     public Sprite brokenSprite;
 
     SpriteRenderer spriteRender;
+    private ParticleSystem sparker;
 
     private void Start()
     {
         health = maxHealth;
         spriteRender = GetComponent<SpriteRenderer>();
+        sparker = GetComponentInChildren<ParticleSystem>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -62,6 +64,10 @@ public class systemHealth : MonoBehaviour
         {
             spriteRender.sprite = functioningSprite;
             GetComponentInParent<ShipSubsystems>().Repair(systemType);
+            if (sparker)
+            {
+                sparker.Stop();
+            }
         }
     }
 
@@ -69,6 +75,10 @@ public class systemHealth : MonoBehaviour
     {
         spriteRender.sprite = brokenSprite;
         health = 0;
+        if (sparker)
+        {
+            sparker.Play();
+        }
     }
 
     public void Repair()
