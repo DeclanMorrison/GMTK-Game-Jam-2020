@@ -1217,6 +1217,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c4f75454847f249ae3cd0760b6aa52, type: 3}
+--- !u!1 &727658085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9029362329041247797, guid: 8969898cb27c46943a23a0bc75a3dc25,
+    type: 3}
+  m_PrefabInstance: {fileID: 7858638498331348910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &798279559
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1296,6 +1302,91 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5c4f75454847f249ae3cd0760b6aa52, type: 3}
+--- !u!1 &847090813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2906402301816985985, guid: 8969898cb27c46943a23a0bc75a3dc25,
+    type: 3}
+  m_PrefabInstance: {fileID: 7858638498331348910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &851117820
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1762042055}
+    m_Modifications:
+    - target: {fileID: 2037148437817715812, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: thrusterFore
+      value: 
+      objectReference: {fileID: 727658085}
+    - target: {fileID: 2037148437817715812, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: thrusterAft
+      value: 
+      objectReference: {fileID: 847090813}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715813, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2037148437817715814, guid: c2d640ce59a32ca4fa18efdc78a606ca,
+        type: 3}
+      propertyPath: m_Name
+      value: DamageSystem
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c2d640ce59a32ca4fa18efdc78a606ca, type: 3}
 --- !u!1 &869973012 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1502088641029245526, guid: c6f5e0f6e047ce642a95efdae6aeed28,
@@ -2254,6 +2345,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &1762042055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2732632684854223060, guid: 8969898cb27c46943a23a0bc75a3dc25,
+    type: 3}
+  m_PrefabInstance: {fileID: 7858638498331348910}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1841164435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7164787584876442601, guid: f836d4c9e05872d41937ee1f3459d6cc,
@@ -2461,6 +2558,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1502088641029245520, guid: c6f5e0f6e047ce642a95efdae6aeed28,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4208ababdb32f664697df699b7b0ee14, type: 3}
     - target: {fileID: 1502088641029245525, guid: c6f5e0f6e047ce642a95efdae6aeed28,
         type: 3}
       propertyPath: target
@@ -2656,7 +2758,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 416790068, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 416790068, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}
       propertyPath: m_Name
@@ -2792,10 +2894,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2906402301816985985, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrusterEffectFore
+      objectReference: {fileID: 0}
     - target: {fileID: 4430813774975545633, guid: 8969898cb27c46943a23a0bc75a3dc25,
         type: 3}
       propertyPath: alertDisplay
       value: 
       objectReference: {fileID: 1113498061}
+    - target: {fileID: 9029362329041247797, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: m_Name
+      value: ThrusterEffectAft
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8969898cb27c46943a23a0bc75a3dc25, type: 3}
