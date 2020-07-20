@@ -30,6 +30,7 @@ public class ShipSubsystems : MonoBehaviour
     public List<SubSystemClass> subSystems = new List<SubSystemClass>();
 
     public AlertDisplay alertDisplay;
+    private DamageSystem damageSystem;
 
     public int health = 100;
     public float damageFactor = 1.5f;
@@ -59,6 +60,7 @@ public class ShipSubsystems : MonoBehaviour
     void Start()
     {
         shipMovement = GetComponent<ShipMovement>();
+        damageSystem = GetComponentInChildren<DamageSystem>();
     }
 
     internal void Damage(float size, float collisonSpeed)
@@ -67,20 +69,28 @@ public class ShipSubsystems : MonoBehaviour
         if (severity > 50)
         {
             health -= (int) severity / 10;
-
-            Array values = Enum.GetValues(typeof(ShipSubSystemType));
-            System.Random rand = new System.Random();
- 
-            int randomSystem = rand.Next(values.Length - 2);
-            if (subSystems[randomSystem].status)
-            {
-                subSystems[randomSystem].status = false;
-                subSystems[randomSystem].healthScript.Damage();
-            }
+            DamageSubsystem();
         }
         else
         {
             health -= (int) (severity / 10);
+        }
+        if (health <= 0)
+        {
+            damageSystem.StartGameOver();
+        }
+    }
+
+    internal void DamageSubsystem()
+    {
+        Array values = Enum.GetValues(typeof(ShipSubSystemType));
+        System.Random rand = new System.Random();
+
+        int randomSystem = rand.Next(values.Length - 2);
+        if (subSystems[randomSystem].status)
+        {
+            subSystems[randomSystem].status = false;
+            subSystems[randomSystem].healthScript.Damage();
         }
     }
 

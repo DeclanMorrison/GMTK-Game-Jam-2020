@@ -52,13 +52,6 @@ public class HullHealthController : MonoBehaviour
         //update the slider value
         slider.value = shipSubsystem.health;
 
-
-        //go to gameover if health below 0
-        if (shipSubsystem.health <= 0)
-        {
-            SceneManager.LoadScene(2);
-        }
-
         //update the lastfram health. Used for checking for health changes.
         lastFrameHealth = shipSubsystem.health;
      }
