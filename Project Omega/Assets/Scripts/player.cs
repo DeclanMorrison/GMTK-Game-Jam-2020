@@ -44,15 +44,13 @@ public class player : MonoBehaviour
         //flip things vased on direction of move
         if (horMoveInput > 0) //move to right
         {
-            transform.rotation = quaternion.Euler(0, 3.14159f, 0);
+            transform.rotation = quaternion.Euler(0, Mathf.PI, 0);
             pickup.throwAngle.x = 1f;
-            wrench.GetComponent<WrenchBehavior>().left = false;
         }
         else if (horMoveInput < 0) //move to left
         {
             transform.rotation = quaternion.Euler(0, 0, 0);
             pickup.throwAngle.x = -1f;
-            wrench.GetComponent<WrenchBehavior>().left = true;
         }   
 
 
