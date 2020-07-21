@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class Score : MonoBehaviour
 {
-    static public float score = 0;
+    static public float score;
     public float scorePerSecond;
     public Text scoreDisplay;
     public float scoreShow;
     // Start is called before the first frame update
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "EngineerAndShip")
+        if (SceneManager.GetActiveScene().name == "EngineerAndShip")
         {
             score = 0;
         }
