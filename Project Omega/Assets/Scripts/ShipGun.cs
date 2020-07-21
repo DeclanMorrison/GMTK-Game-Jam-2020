@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class ShipGun : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class ShipGun : MonoBehaviour
     public GameObject bulletPrefab;
     public ParticleSystem bulletSpewer;
     public GameObject bulletHitEffect;
+    public ParticleSystem muzzleFlash;
     private AudioSource audio;
     private int i = 0; //iterator for tracking firerate
     LayerMask mask; //layermask for determining which layers will be affected by guns (important that ship is not on this layer)
@@ -41,6 +43,7 @@ public class ShipGun : MonoBehaviour
                 //add effects
                 audio.Play();
                 bulletSpewer.Play();
+                muzzleFlash.Play();
 
                 GetComponentInParent<ShipSubsystems>().ExpendAmmo(5);
 
