@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 public class DamageSystem : MonoBehaviour
 {
     private List<ParticleSystem> explosionFX;
+    private List<AudioSource> explosionSounds;
+
+    private AudioSource rumbleSound;
+
     private ShipSubsystems shipSubsystems;
     private bool exploding;
 
@@ -21,6 +25,8 @@ public class DamageSystem : MonoBehaviour
     void Start()
     {
         explosionFX = new List<ParticleSystem>(GetComponentsInChildren<ParticleSystem>());
+        explosionSounds = new List<AudioSource>(GetComponentsInChildren<AudioSource>());
+        rumbleSound = GetComponent<AudioSource>();
         shipSubsystems = GetComponentInParent<ShipSubsystems>();
     }
 
@@ -39,6 +45,7 @@ public class DamageSystem : MonoBehaviour
             yield return new WaitForSeconds(timeUntilExplosion);
             int explosionIndex = UnityEngine.Random.Range(0, explosionFX.Count);
             explosionFX[explosionIndex].Play();
+            explosionSounds[explosionIndex].Play();
             shipSubsystems.DamageSubsystem();
         }
     }

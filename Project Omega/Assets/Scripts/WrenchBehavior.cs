@@ -12,26 +12,17 @@ public class WrenchBehavior : MonoBehaviour
     Rigidbody2D rb;
     Quaternion initialRot;
 
-    internal bool left;
-
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        initialRot = transform.rotation;
+        initialRot = transform.localRotation;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (left)
-        {
-            transform.Rotate(Vector3.forward, Time.deltaTime * speed);
-        }
-        else
-        {
-            transform.Rotate(Vector3.forward, -Time.deltaTime * speed);
-        }
+        transform.localRotation = transform.localRotation * Quaternion.Euler(0, 0, speed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,7 +36,7 @@ public class WrenchBehavior : MonoBehaviour
 
     internal void Swing()
     {
-        transform.rotation = initialRot;
+        transform.localRotation = initialRot;
         StartCoroutine(EndSwing());
     }
 
