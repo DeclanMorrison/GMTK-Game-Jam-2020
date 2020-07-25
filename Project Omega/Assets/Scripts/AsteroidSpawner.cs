@@ -39,10 +39,10 @@ public class AsteroidSpawner : MonoBehaviour
 
     void FixedUpdate()
     {
+
         i = i + 1;
         if(i > 500) // is called once every 5 seconds
         {
-            spawnMultiplier = round/2;
 
 
             if (round > difficulty)
@@ -59,10 +59,10 @@ public class AsteroidSpawner : MonoBehaviour
             {
                 round = round + 1;
             }
-
+            spawnMultiplier = round / 2;
             i = 0;
         }
-       
+
 
 
         foreach (AsteroidTypes asteroidType in asteroidTypes)
