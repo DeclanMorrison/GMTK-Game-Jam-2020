@@ -11,8 +11,7 @@ public class cargoInSpace : MonoBehaviour
     public float startAngle;
     public float startTorque;
 
-    public Vector3 offset;
-    public Vector2 enterVelocity;
+    private GameObject enterPoint;
     
     public float scaleFactor;
     private Vector3 endScale;
@@ -23,6 +22,7 @@ public class cargoInSpace : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        enterPoint = GameObject.Find("Incoming Cargo Point");
         rb = GetComponent<Rigidbody2D>();
         if (startsInSpace == true)
         {
@@ -49,8 +49,8 @@ public class cargoInSpace : MonoBehaviour
         {
             Destroy(sparkle);
             transform.localScale = endScale;
-            transform.position = other.gameObject.transform.position + offset;
-            rb.velocity = other.gameObject.GetComponent<Rigidbody2D>().velocity + enterVelocity;
+            transform.position = enterPoint.transform.position;
+            rb.velocity = other.gameObject.GetComponent<Rigidbody2D>().velocity;
             rb.rotation = 0;
             rb.gravityScale = 4;
             Destroy(this);

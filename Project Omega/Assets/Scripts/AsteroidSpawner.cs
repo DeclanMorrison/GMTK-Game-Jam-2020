@@ -8,18 +8,28 @@ public class AsteroidTypes
 {
     public GameObject asteroidObject;
     public float spawnRate;
-    public int startingSpeed;
+}
+
+[Serializable]
+public class CargoTypes
+{
+    public GameObject cargoObject;
+    public float spawnRate;
+    public float startingSpeed;
 }
 
 public class AsteroidSpawner : MonoBehaviour
 {
     System.Random rand = new System.Random();
     public List<AsteroidTypes> asteroidTypes = new List<AsteroidTypes>();
+    public List<CargoTypes> cargoTypes = new List<CargoTypes>();
+
     public int spawnBottom;
     public int spawnTop;
     public float spawnSlope;
-    Vector3 spawnLocation;
     public Vector3 spawnOffset;
+
+    Vector3 spawnLocation;
     public float spawnMultiplier;
 
     int i = 500;
@@ -50,7 +60,6 @@ public class AsteroidSpawner : MonoBehaviour
                 round = round + 1;
             }
 
-            //update warning
             i = 0;
         }
        
@@ -62,24 +71,34 @@ public class AsteroidSpawner : MonoBehaviour
             {
                 spawnLocation.y = (float)rand.NextDouble() * -100f;
                 spawnLocation.x = spawnLocation.y / spawnSlope;
+
                 GameObject newAsteroid = Instantiate(asteroidType.asteroidObject, spawnLocation + spawnOffset, transform.rotation);
-                AsteroidBehavior asteroid = newAsteroid.GetComponent<AsteroidBehavior>();
-                cargoInSpace cargo = newAsteroid.GetComponent<cargoInSpace>();
 
-                if (asteroid)
-                {
-                    newAsteroid.GetComponent<AsteroidBehavior>().startVelocity = rand.Next(asteroidType.startingSpeed / 5, asteroidType.startingSpeed);
-                    newAsteroid.GetComponent<AsteroidBehavior>().startAngle = rand.Next(55, 85);
-                    newAsteroid.GetComponent<AsteroidBehavior>().startTorque = rand.Next(-30, 30);
-                }
-
-                if (cargo)
-                {
-                    newAsteroid.GetComponent<cargoInSpace>().startVelocity = rand.Next(asteroidType.startingSpeed / 5, asteroidType.startingSpeed);
-                    newAsteroid.GetComponent<cargoInSpace>().startAngle = rand.Next(55, 85);
-                    newAsteroid.GetComponent<cargoInSpace>().startTorque = rand.Next(-30, 30);
-                }
+                float size = newAsteroid.GetComponent<AsteroidBehavior>().sizeInUnits;
+                float squaredSize = Mathf.Pow(size, 2);
+                float sqrtSize = Mathf.Sqrt(size);
+                newAsteroid.GetComponent<AsteroidBehavior>().startVelocity = (float)rand.NextDouble() * 200/ sqrtSize + 100/ sqrtSize;
+                newAsteroid.GetComponent<AsteroidBehavior>().startAngle = rand.Next(55, 85);
+                newAsteroid.GetComponent<AsteroidBehavior>().startTorque = rand.Next(-30, 30);
                
+            }
+        }
+
+        foreach (CargoTypes cargoType in cargoTypes)
+        {
+            if (rand.NextDouble() * 100 < cargoType.spawnRate * spawnMultiplier)
+            {
+                spawnLocation.y = (float)rand.NextDouble() * -100f;
+                spawnLocation.x = spawnLocation.y / spawnSlope;
+
+                GameObject newCargo = Instantiate(cargoType.cargoObject, spawnLocation + spawnOffset, transform.rotation);
+                AsteroidBehavior asteroid = newCargo.GetComponent<AsteroidBehavior>();
+                cargoInSpace cargo = newCargo.GetComponent<cargoInSpace>();
+
+                newCargo.GetComponent<cargoInSpace>().startVelocity = ((float)rand.NextDouble() * cargoType.startingSpeed/2) + cargoType.startingSpeed / 2;
+                newCargo.GetComponent<cargoInSpace>().startAngle = rand.Next(55, 85);
+                newCargo.GetComponent<cargoInSpace>().startTorque = rand.Next(-30, 30);
+                
             }
         }
 
