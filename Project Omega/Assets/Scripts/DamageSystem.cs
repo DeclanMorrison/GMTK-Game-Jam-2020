@@ -21,6 +21,8 @@ public class DamageSystem : MonoBehaviour
     public GameObject thrusterFore;
     public GameObject thrusterAft;
 
+    public GameObject firePrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,23 @@ public class DamageSystem : MonoBehaviour
             explosionFX[explosionIndex].Play();
             explosionSounds[explosionIndex].Play();
             shipSubsystems.DamageSubsystem();
+        }
+    }
+
+    internal void SpawnVisualDamage(float health, ContactPoint2D[] contacts)
+    {
+        //Calculate Average Point
+        Vector2 averagePoint = Vector2.zero;
+        for (int i = 0; i < contacts.Length; i++)
+        {
+            averagePoint += contacts[i].point;
+        }
+        averagePoint /= contacts.Length;
+
+        //Spawn FX there based on severity
+        if (health < 50)
+        {
+            Instantiate(firePrefab, averagePoint, transform.rotation * Quaternion.Euler(0, 0, 180), transform);
         }
     }
 
