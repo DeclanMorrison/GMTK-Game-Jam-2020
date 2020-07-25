@@ -63,9 +63,10 @@ public class ShipSubsystems : MonoBehaviour
         damageSystem = GetComponentInChildren<DamageSystem>();
     }
 
-    internal void Damage(float size, float collisonSpeed)
+    internal void Damage(float size, float collisonSpeed, ContactPoint2D[] contacts)
     {
         float severity = size * collisonSpeed * damageFactor;
+        
         if (severity > 50)
         {
             health -= (int) severity / 10;
@@ -79,6 +80,8 @@ public class ShipSubsystems : MonoBehaviour
         {
             damageSystem.StartGameOver();
         }
+
+        damageSystem.SpawnVisualDamage(health, contacts);
     }
 
     internal void DamageSubsystem()
