@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[Serializable]
+public class HullDamageFX
+{
+    public GameObject prefab;
+    public float probability;
+}
+
 public class DamageSystem : MonoBehaviour
 {
     private List<ParticleSystem> explosionFX;
@@ -21,7 +28,7 @@ public class DamageSystem : MonoBehaviour
     public GameObject thrusterFore;
     public GameObject thrusterAft;
 
-    public GameObject firePrefab;
+    public List<HullDamageFX> hullDamageFX;
 
     // Start is called before the first frame update
     void Start()
@@ -62,10 +69,14 @@ public class DamageSystem : MonoBehaviour
         }
         averagePoint /= contacts.Length;
 
-        //Spawn FX there based on severity
-        if (health < 50)
+        //Spawn FX there based on remaining hull and probability
+        foreach (HullDamageFX hullDamage in hullDamageFX)
         {
-            Instantiate(firePrefab, averagePoint, transform.rotation * Quaternion.Euler(0, 0, 180), transform);
+            if()
+            {
+                Instantiate(hullDamage.prefab, averagePoint, transform.rotation, transform);
+                break;
+            }
         }
     }
 
