@@ -1653,6 +1653,16 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 270564169}
+    - target: {fileID: 3340345008620909956, guid: 3770912731d51ae439a64d11e161cfac,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -87.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3340345008620909956, guid: 3770912731d51ae439a64d11e161cfac,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 191.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3770912731d51ae439a64d11e161cfac, type: 3}
 --- !u!1001 &5193986167669777174
