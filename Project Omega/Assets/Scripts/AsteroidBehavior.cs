@@ -20,6 +20,7 @@ public class AsteroidBehavior : MonoBehaviour
     {
         float squaredSize = Mathf.Pow(sizeInUnits, 2);
         float sqrtSize = Mathf.Sqrt(sizeInUnits);
+        float cubeRootSize = Mathf.Pow(sizeInUnits, 1f / 3f);
 
 
         audio = GetComponent<AudioSource>();
@@ -34,11 +35,10 @@ public class AsteroidBehavior : MonoBehaviour
         particleSystem = GetComponent<ParticleSystem>();
         var pSMain = particleSystem.main;
         pSMain.startSize = new ParticleSystem.MinMaxCurve(sqrtSize * .1f, sqrtSize * .5f);
-        pSMain.startLifetime = new ParticleSystem.MinMaxCurve(sqrtSize * .04f, sqrtSize * 2f);
+        pSMain.startLifetime = new ParticleSystem.MinMaxCurve(cubeRootSize * .04f, cubeRootSize * 1.5f);
         //pSMain.startSpeed = sizeInUnits * 5;
         var pSEmission = particleSystem.emission;
         pSEmission.rateOverTime = sqrtSize * 50;
-
     }
 
     // Update is called once per frame

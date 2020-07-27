@@ -24,12 +24,13 @@ public class AsteroidSpawner : MonoBehaviour
     public List<AsteroidTypes> asteroidTypes = new List<AsteroidTypes>();
     public List<CargoTypes> cargoTypes = new List<CargoTypes>();
 
-    public int spawnBottom;
-    public int spawnTop;
-    public float spawnSlope;
-    public Vector3 spawnOffset;
+    //for selecting a spawn location (will draw line between two spawn points and pick a point on it)
 
-    Vector3 spawnLocation;
+    public Transform spawnPoint1;
+    public Transform spawnPoint2;
+    public Transform ship;
+
+
     public float spawnMultiplier;
 
     int i = 500;
@@ -41,10 +42,8 @@ public class AsteroidSpawner : MonoBehaviour
     {
 
         i = i + 1;
-        if(i > 500) // is called once every 5 seconds
+        if(i > 300) // is called once every 3 seconds
         {
-
-
             if (round > difficulty)
             {
                 round = 1;
@@ -64,44 +63,56 @@ public class AsteroidSpawner : MonoBehaviour
         }
 
 
-
+        //run once for each asteroid type
         foreach (AsteroidTypes asteroidType in asteroidTypes)
         {
             if(rand.NextDouble()*100 < asteroidType.spawnRate*spawnMultiplier)
             {
-                spawnLocation.y = (float)rand.NextDouble() * -100f;
-                spawnLocation.x = spawnLocation.y / spawnSlope;
+                Vector3 spawnLocation = PickLocation();
 
-                GameObject newAsteroid = Instantiate(asteroidType.asteroidObject, spawnLocation + spawnOffset, transform.rotation);
+                //find the angle the asteroids would need to spawn to fly straight at the ship
+                float spawnAngle = Mathf.Atan2(ship.position.y - spawnLocation.y, ship.position.x - spawnLocation.x) * Mathf.Rad2Deg - 90;
+
+                GameObject newAsteroid = Instantiate(asteroidType.asteroidObject, spawnLocation, transform.rotation);
 
                 float size = newAsteroid.GetComponent<AsteroidBehavior>().sizeInUnits;
                 float squaredSize = Mathf.Pow(size, 2);
                 float sqrtSize = Mathf.Sqrt(size);
                 newAsteroid.GetComponent<AsteroidBehavior>().startVelocity = (float)rand.NextDouble() * 200/ sqrtSize + 100/ sqrtSize;
-                newAsteroid.GetComponent<AsteroidBehavior>().startAngle = rand.Next(55, 85);
+                newAsteroid.GetComponent<AsteroidBehavior>().startAngle = spawnAngle + UnityEngine.Random.Range(-15,15);
                 newAsteroid.GetComponent<AsteroidBehavior>().startTorque = rand.Next(-30, 30);
-               
+
+                Destroy(newAsteroid, 30);
             }
         }
 
+        //run once for each cargo
         foreach (CargoTypes cargoType in cargoTypes)
         {
             if (rand.NextDouble() * 100 < cargoType.spawnRate * spawnMultiplier)
             {
-                spawnLocation.y = (float)rand.NextDouble() * -100f;
-                spawnLocation.x = spawnLocation.y / spawnSlope;
+                Vector3 spawnLocation = PickLocation();
 
-                GameObject newCargo = Instantiate(cargoType.cargoObject, spawnLocation + spawnOffset, transform.rotation);
-                AsteroidBehavior asteroid = newCargo.GetComponent<AsteroidBehavior>();
-                cargoInSpace cargo = newCargo.GetComponent<cargoInSpace>();
+                //find the angle the cargo would need to spawn to fly straight at the ship
+                float spawnAngle = Mathf.Atan2(ship.position.y - spawnLocation.y, ship.position.x - spawnLocation.x) * Mathf.Rad2Deg - 90;
+
+                GameObject newCargo = Instantiate(cargoType.cargoObject, spawnLocation, transform.rotation);
 
                 newCargo.GetComponent<cargoInSpace>().startVelocity = ((float)rand.NextDouble() * cargoType.startingSpeed/2) + cargoType.startingSpeed / 2;
-                newCargo.GetComponent<cargoInSpace>().startAngle = rand.Next(55, 85);
+                newCargo.GetComponent<cargoInSpace>().startAngle = spawnAngle + UnityEngine.Random.Range(-15, 15);
                 newCargo.GetComponent<cargoInSpace>().startTorque = rand.Next(-30, 30);
                 
             }
         }
+    }
 
-
+    public Vector3 PickLocation() //returns a location between the two spawn points
+    {
+        Vector3 location;
+        location.x = UnityEngine.Random.Range(spawnPoint1.position.x, spawnPoint2.position.x);
+        float slope = (spawnPoint2.position.y - spawnPoint1.position.y) / (spawnPoint2.position.x - spawnPoint1.position.x);
+        location.y = slope * location.x - slope * spawnPoint1.position.x + spawnPoint1.position.y;
+        location.z = 0;
+        return location;
     }
 }
