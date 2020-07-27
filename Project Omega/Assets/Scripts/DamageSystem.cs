@@ -59,7 +59,7 @@ public class DamageSystem : MonoBehaviour
         }
     }
 
-    internal void SpawnVisualDamage(float health, ContactPoint2D[] contacts)
+    internal void SpawnVisualDamage(float hull, ContactPoint2D[] contacts)
     {
         //Calculate Average Point
         Vector2 averagePoint = Vector2.zero;
@@ -70,9 +70,11 @@ public class DamageSystem : MonoBehaviour
         averagePoint /= contacts.Length;
 
         //Spawn FX there based on remaining hull and probability
+        float hullFactor = 0.5f / hull;
+
         foreach (HullDamageFX hullDamage in hullDamageFX)
         {
-            if()
+            if((UnityEngine.Random.Range(0f, 1f) - hullFactor) < hullDamage.probability)
             {
                 Instantiate(hullDamage.prefab, averagePoint, transform.rotation, transform);
                 break;
