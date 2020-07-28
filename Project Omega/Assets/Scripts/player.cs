@@ -50,13 +50,13 @@ public class player : MonoBehaviour
         {
             transform.rotation = quaternion.Euler(0, Mathf.PI, 0);
             pickup.throwAngle.x = 1f;
-            pickup.translationOffset.x = .3f;
+            pickup.translationOffset.x = .2f;
         }
         else if (horMoveInput < 0) //move to left
         {
             transform.rotation = quaternion.Euler(0, 0, 0);
             pickup.throwAngle.x = -1f;
-            pickup.translationOffset.x = -.3f;
+            pickup.translationOffset.x = -.2f;
         }   
 
         //sprinting
