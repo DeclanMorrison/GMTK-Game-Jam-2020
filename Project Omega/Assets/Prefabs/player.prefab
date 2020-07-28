@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 85020569
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: be52082807a74de4d82ecaf2216f809e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -190,7 +190,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.105556846, y: -0.47771168}
+  m_Offset: {x: 0.11292362, y: -0.20835948}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -201,7 +201,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0435402, y: 1.006356}
+  m_Size: {x: 1.1146734, y: 1.077507}
   m_EdgeRadius: 0
 --- !u!114 &5193986167621158040
 MonoBehaviour:
@@ -217,14 +217,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemKey: 101
   throwKey: 101
-  carriedObject: {fileID: 0}
-  carriedCollider: {fileID: 0}
-  translationOffset: {x: 0, y: 0, z: 0}
+  translationOffset: {x: -0.3, y: 0.3, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
   throwVelocity: 10
-  pickupRange: {fileID: 5193986167621158041}
-  throwAngle: {x: 0, y: 0.5}
+  throwAngle: {x: 0, y: 1}
   ship: {fileID: 0}
+  carriedObject: {fileID: 0}
+  highlight: {fileID: 2100000, guid: 7fea2d0d9ccca0d40b8b016474f42444, type: 2}
+  defaultCargoMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &5193986167994735294
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +269,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.003898263, y: -0.9774538}
+  m_Offset: {x: 0.00005403161, y: -0.9985322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -280,7 +280,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.29227185, y: 0.071456194}
+  m_Size: {x: 0.35954612, y: 0.11361289}
   m_EdgeRadius: 0
 --- !u!1 &5193986169500492228
 GameObject:
@@ -358,7 +358,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 85020569
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b18b6d67511a4e745b9f0085dc73c20d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06a7467c6027fc1459e63bd8aaea3c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundDetection: {fileID: 0}
   ship: {fileID: 0}
   pickup: {fileID: 5193986167621158040}
   moveAccel: 4
