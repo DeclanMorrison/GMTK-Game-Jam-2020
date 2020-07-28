@@ -65,7 +65,22 @@ MonoBehaviour:
   hullDamageFX:
   - prefab: {fileID: 5788968914708350839, guid: 034d409be581dcc44828758296acd47c,
       type: 3}
-    probability: 0.5
+    probability: 0.25
+  - prefab: {fileID: 1946329127198184765, guid: 16921ec546c3e804a8328d9041c1c7f8,
+      type: 3}
+    probability: 0.25
+  - prefab: {fileID: 3330948307786652239, guid: 8229b55688b33b94d849e4e3d95e89e6,
+      type: 3}
+    probability: 0.25
+  - prefab: {fileID: 7995000330077674783, guid: 049f2a76ee8dd774d911b49a47ebb1e9,
+      type: 3}
+    probability: 0.25
+  - prefab: {fileID: 1732436328542222417, guid: e9783191d77a95547816229c83cbbbc0,
+      type: 3}
+    probability: 0.25
+  - prefab: {fileID: 8545337204850860717, guid: b5c4e7e346301a048be3340c2db0e5a2,
+      type: 3}
+    probability: 0.25
 --- !u!1001 &2037148435826176656
 PrefabInstance:
   m_ObjectHideFlags: 0
