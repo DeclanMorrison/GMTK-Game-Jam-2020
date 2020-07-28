@@ -8,6 +8,7 @@ public class player : MonoBehaviour
 {
 
     //game objects
+    public GroundDetection groundDetection;
     private Rigidbody2D rb;
     public Rigidbody2D ship;
     public pickup pickup;
@@ -23,7 +24,7 @@ public class player : MonoBehaviour
     //jumping
     public KeyCode jumpKey = KeyCode.None;
     public float jumpForce = 1;
-    private bool isOnGround = false;
+    bool isOnGround = false;
 
     //fixing
     public KeyCode fixKey = KeyCode.None;
@@ -39,6 +40,9 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //fetch the ground status from ground detector
+        isOnGround = groundDetection.isOnGround;
+
         horMoveInput = Input.GetAxisRaw("Horizontal"); // Gets input for left/right movement.  returns -1, 0 , 1
 
         //flip things vased on direction of move
@@ -46,14 +50,14 @@ public class player : MonoBehaviour
         {
             transform.rotation = quaternion.Euler(0, Mathf.PI, 0);
             pickup.throwAngle.x = 1f;
+            pickup.translationOffset.x = .3f;
         }
         else if (horMoveInput < 0) //move to left
         {
             transform.rotation = quaternion.Euler(0, 0, 0);
             pickup.throwAngle.x = -1f;
+            pickup.translationOffset.x = -.3f;
         }   
-
-
 
         //sprinting
         if (Input.GetKeyDown(sprintKey))
@@ -94,28 +98,14 @@ public class player : MonoBehaviour
             wrench.SetActive(true);
             wrench.GetComponent<WrenchBehavior>().Swing();
         }
-
     }
 
     void FixedUpdate()
     {
-
         //executes horizontal movement
         if (Mathf.Abs(rb.velocity.x - ship.velocity.x) < maxSpeed && isOnGround == true)
         {
             rb.velocity = rb.velocity + Vector2.right * moveAccel * horMoveInput;
         }
-
     }
-
-
-    //check ground collisions
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if ((other.tag == "Ground" || other.tag == "Cargo") && isOnGround == false)
-        {
-            isOnGround = true;
-        }
-    }
-
 }
