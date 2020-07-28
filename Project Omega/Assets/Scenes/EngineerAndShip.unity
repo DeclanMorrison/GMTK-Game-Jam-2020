@@ -1330,6 +1330,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 713957958}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1689063705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5193986167994735294, guid: b3de2e6f3f37b2541894d67f4e9c957b,
+    type: 3}
+  m_PrefabInstance: {fileID: 5193986167669777174}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1689063708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689063705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 598cda331fdf33149bf3a9dee1fe07ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOnGround: 0
 --- !u!4 &1841164435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7164787584876442601, guid: f836d4c9e05872d41937ee1f3459d6cc,
@@ -1681,26 +1700,16 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 1243949343}
-    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
+    - target: {fileID: 5193986167621158043, guid: b3de2e6f3f37b2541894d67f4e9c957b,
         type: 3}
-      propertyPath: throwAngle.y
-      value: 1
+      propertyPath: m_LocalPosition.y
+      value: -0.342
       objectReference: {fileID: 0}
-    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
+    - target: {fileID: 5193986167621158043, guid: b3de2e6f3f37b2541894d67f4e9c957b,
         type: 3}
-      propertyPath: throwAngle.x
-      value: 0
+      propertyPath: m_LocalPosition.x
+      value: -0.563
       objectReference: {fileID: 0}
-    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
-        type: 3}
-      propertyPath: highlight
-      value: 
-      objectReference: {fileID: 2100000, guid: 7fea2d0d9ccca0d40b8b016474f42444, type: 2}
-    - target: {fileID: 5193986167621158040, guid: b3de2e6f3f37b2541894d67f4e9c957b,
-        type: 3}
-      propertyPath: defaultCargoMaterial
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5193986169500492225, guid: b3de2e6f3f37b2541894d67f4e9c957b,
         type: 3}
       propertyPath: ship
@@ -1711,6 +1720,11 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 5193986169500492225, guid: b3de2e6f3f37b2541894d67f4e9c957b,
+        type: 3}
+      propertyPath: groundDetection
+      value: 
+      objectReference: {fileID: 1689063708}
     - target: {fileID: 5193986169500492228, guid: b3de2e6f3f37b2541894d67f4e9c957b,
         type: 3}
       propertyPath: m_Name
@@ -1959,6 +1973,11 @@ PrefabInstance:
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[4].x
       value: 1.0004206
       objectReference: {fileID: 0}
+    - target: {fileID: 1709272616812860255, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 2732632684854222888, guid: 8969898cb27c46943a23a0bc75a3dc25,
         type: 3}
       propertyPath: m_Name
@@ -2038,6 +2057,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805858532991734881, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].cycleCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2805858532991734881, guid: 8969898cb27c46943a23a0bc75a3dc25,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].time
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3681896708919096069, guid: 8969898cb27c46943a23a0bc75a3dc25,
         type: 3}
