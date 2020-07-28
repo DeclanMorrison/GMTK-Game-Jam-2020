@@ -149,6 +149,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireFX
       objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.23272249
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.9807522
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: CollisionModule.collisionMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212060641999399855, guid: 2c64f82bd0be3c744aef77d3239ca4a7,
+        type: 3}
+      propertyPath: CollisionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c64f82bd0be3c744aef77d3239ca4a7, type: 3}
 --- !u!4 &3765271521021855639 stripped
