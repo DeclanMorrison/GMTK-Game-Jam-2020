@@ -10,6 +10,7 @@ public class CameraFollow : MonoBehaviour
 
     Camera cam;
 
+
     private void Start()
     {
         cam = GetComponent<Camera>();

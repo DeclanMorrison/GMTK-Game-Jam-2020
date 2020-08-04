@@ -30,6 +30,9 @@ public class player : MonoBehaviour
     public KeyCode fixKey = KeyCode.None;
     public GameObject wrench;
 
+    //Stabilization
+    public float stabilizationFactor; //amount to stabilize by. between 0 and 1
+    private Vector2 lastShipVelocity;
 
     void Start()
     {
@@ -40,6 +43,7 @@ public class player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         //fetch the ground status from ground detector
         isOnGround = groundDetection.isOnGround;
 
@@ -98,14 +102,31 @@ public class player : MonoBehaviour
             wrench.SetActive(true);
             wrench.GetComponent<WrenchBehavior>().Swing();
         }
+
+        Stabilization();
+    }
+
+    private void Stabilization()  //not used
+    {
+        //stabize player (give them a part of the ship's velocity)
+        if (lastShipVelocity != ship.GetComponent<Rigidbody2D>().velocity)
+        {
+            Vector2 shipChangeInVelocity = ship.GetComponent<Rigidbody2D>().velocity - lastShipVelocity;
+            rb.velocity += shipChangeInVelocity * stabilizationFactor;
+        }
+
+        //update last ship velocity
+        lastShipVelocity = ship.GetComponent<Rigidbody2D>().velocity;
     }
 
     void FixedUpdate()
     {
+
         //executes horizontal movement
         if (Mathf.Abs(rb.velocity.x - ship.velocity.x) < maxSpeed && isOnGround == true)
         {
             rb.velocity = rb.velocity + Vector2.right * moveAccel * horMoveInput;
         }
+
     }
 }
