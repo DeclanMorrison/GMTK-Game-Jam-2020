@@ -1,0 +1,90 @@
+{
+    "name": "EngineerControls",
+    "maps": [
+        {
+            "name": "Gameplay",
+            "id": "1d4d56e2-e8d3-4382-b37a-8d259a8cc028",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "cc5a33ab-7523-4302-8156-d206d0a07304",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Arms1",
+                    "type": "Value",
+                    "id": "2a4eee39-46fe-476d-b1ad-16366831b9ae",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Jump1",
+                    "type": "Button",
+                    "id": "2eb92a61-7515-4c9f-9c20-e5b9a27fabf6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "PickupThrow",
+                    "type": "Button",
+                    "id": "41d218ae-e51f-4d34-b790-4b1683f25eac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7d9c6bf9-0964-49a0-b66d-dab1eb7ac7fc",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2cbf497-caa6-4ec4-a455-2d5f7452df6d",
+                    "path": "<Gamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Arms1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "85732f4a-b57d-462a-92a2-48e13d87a6fb",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7942ccdb-feda-43eb-8272-cbaa05473710",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PickupThrow",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

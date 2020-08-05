@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class pickup : MonoBehaviour
     private GameObject closestObject = null;
     private GameObject previousClosestObject = null;
 
+    //outline settings
     public Material highlight;
     public Material defaultCargoMaterial;
 
@@ -87,24 +89,22 @@ public class pickup : MonoBehaviour
         //Pick up closest object
         if (carriedObject == null && Input.GetKeyDown(itemKey))
         {
-            Debug.Log("pickup initiated");
             if (closestObject != null)
             {
                 carriedObject = closestObject;
                 carriedObject.GetComponent<SpriteRenderer>().material = defaultCargoMaterial;
                 carriedObject.layer = LayerMask.NameToLayer("Default");
+                carriedObject.GetComponent<Collider2D>().enabled = false;
             }
-            Debug.Log("pickup terminated");
         }
-
         //throw
         else if (carriedObject != null && Input.GetKeyDown(throwKey))
         {
-            Debug.Log("Throw initiated");
             carriedObject.GetComponent<Rigidbody2D>().velocity = ship.velocity;
             carriedObject.GetComponent<Rigidbody2D>().velocity += throwAngle * throwVelocity;
             carriedObject.layer = LayerMask.NameToLayer("Item");
             carriedObject = null;
         }
+        
     }
 }
