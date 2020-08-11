@@ -200,6 +200,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f836d4c9e05872d41937ee1f3459d6cc, type: 3}
+--- !u!4 &82098447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5003125397362725146, guid: d780489d71dee994f8c548c8e6264e3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5003125397755760701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &100487848
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,6 +628,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f836d4c9e05872d41937ee1f3459d6cc, type: 3}
+--- !u!4 &528618876 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5003125398578165925, guid: d780489d71dee994f8c548c8e6264e3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5003125397755760701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &690253817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1764,6 +1776,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 5003125398578165924, guid: d780489d71dee994f8c548c8e6264e3f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5003125398578165930, guid: d780489d71dee994f8c548c8e6264e3f,
         type: 3}
       propertyPath: m_Layer
@@ -1829,6 +1846,31 @@ PrefabInstance:
       propertyPath: ship
       value: 
       objectReference: {fileID: 1243949343}
+    - target: {fileID: 5003125398605009642, guid: d780489d71dee994f8c548c8e6264e3f,
+        type: 3}
+      propertyPath: backArmSprite
+      value: 
+      objectReference: {fileID: 82098447}
+    - target: {fileID: 5003125398605009642, guid: d780489d71dee994f8c548c8e6264e3f,
+        type: 3}
+      propertyPath: frontArmSprite
+      value: 
+      objectReference: {fileID: 528618876}
+    - target: {fileID: 5003125398605009642, guid: d780489d71dee994f8c548c8e6264e3f,
+        type: 3}
+      propertyPath: armSwingSmooth
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003125398605009642, guid: d780489d71dee994f8c548c8e6264e3f,
+        type: 3}
+      propertyPath: throwVelocity
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003125398605009642, guid: d780489d71dee994f8c548c8e6264e3f,
+        type: 3}
+      propertyPath: maxThrowHold
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5003125398605009647, guid: d780489d71dee994f8c548c8e6264e3f,
         type: 3}
       propertyPath: m_Name
@@ -1841,6 +1883,7 @@ PrefabInstance:
       objectReference: {fileID: 6200000, guid: 5bd5c418287ff394fba1754cb084beb4, type: 2}
     m_RemovedComponents:
     - {fileID: 5003125398605009641, guid: d780489d71dee994f8c548c8e6264e3f, type: 3}
+    - {fileID: 8623528040448968637, guid: d780489d71dee994f8c548c8e6264e3f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d780489d71dee994f8c548c8e6264e3f, type: 3}
 --- !u!1001 &7858638498331348910
 PrefabInstance:

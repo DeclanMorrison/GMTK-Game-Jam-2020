@@ -244,8 +244,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -406849983
-  m_SortingLayer: 2
+  m_SortingLayerID: 85020569
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 8726412327470880774, guid: 8aa999ffd155abb48b02d24b24dd2b0f,
     type: 3}
@@ -757,11 +757,14 @@ MonoBehaviour:
   backArm: {fileID: 3730618967021413552}
   frontArm: {fileID: 767481366003368252}
   armsInput: {x: 0, y: 0}
+  armSwingSmooth: 0
   head: {fileID: 1175010240336434726}
+  bodyDirection: 0
   translationOffset: {x: 0, y: 0, z: 0}
   rotationOffset: {x: 0, y: 0, z: 0}
-  throwVelocity: 0
+  throwVelocity: 5
   throwAngle: {x: 0, y: 0}
+  thrownObject: {fileID: 0}
   pickupPoint: {fileID: 5003125397799466929}
   carriedObject: {fileID: 0}
   highlight: {fileID: 2100000, guid: 7fea2d0d9ccca0d40b8b016474f42444, type: 2}

@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class player : MonoBehaviour
 {
@@ -24,6 +26,8 @@ public class player : MonoBehaviour
     public KeyCode sprintKey = KeyCode.None;
     public float sprintMultiplier = 2f;
 
+    private Vector2 moveInput;
+
     //jumping
     public float jumpForce = 1;
     bool isOnGround = false;
@@ -40,11 +44,15 @@ public class player : MonoBehaviour
     public Transform backArm;
     public Transform frontArm;
     public Vector2 armsInput;
-    private float armAngleCorrection;
+    private float desiredArmAngle;
+    public float armSwingSmooth;
+    private float lastArmAngle;
 
     //Head
     public Transform head;
 
+    public enum BodyDirection {Left,Right}
+    public BodyDirection bodyDirection = BodyDirection.Left;
 
     //Holding Settings
     public Vector3 translationOffset;
@@ -53,11 +61,15 @@ public class player : MonoBehaviour
     //throw settings
     public float throwVelocity;
     public Vector2 throwAngle;
+    public GameObject thrownObject;
+    private float throwHoldSeconds;
+    public float maxThrowHold = 3;
+    private bool isThrowing = false;
 
     //Extra Holding Variables
     public GameObject pickupPoint;
     private Collider2D pickupRange;
-    ContactFilter2D emptyFilter = new ContactFilter2D();
+    private ContactFilter2D emptyFilter = new ContactFilter2D();
     public GameObject carriedObject = null;
     private GameObject closestObject = null;
     private GameObject previousClosestObject = null;
@@ -71,7 +83,12 @@ public class player : MonoBehaviour
         controls = new EngineerControls();
         controls.Gameplay.Jump1.performed += ctx => Jump();
         controls.Gameplay.Arms1.performed += ctx => armsInput = ctx.ReadValue<Vector2>();
-        controls.Gameplay.PickupThrow.performed += ctx => PickupThrow();
+        controls.Gameplay.Arms1.canceled += ctx => armsInput = Vector2.zero;
+        controls.Gameplay.PickupThrow.performed += ctx => PickupThrowPress();
+        controls.Gameplay.PickupThrow.canceled += ctx => PickupThrowRelease();
+
+        controls.Gameplay.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        controls.Gameplay.Movement.canceled += ctx => moveInput = Vector2.zero;
     }
 
     void Start()
@@ -81,16 +98,7 @@ public class player : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    void Jump()
-    {
-        //executes jump
-        if (isOnGround == true)
-        {
-            rb.velocity = rb.velocity + Vector2.up * jumpForce;
-            isOnGround = false;
-            //GetComponent<Animator>().Play("Player_jump");
-        }
-    }
+  
 
     private void OnEnable()
     {
@@ -108,39 +116,61 @@ public class player : MonoBehaviour
         //fetch the ground status from ground detector
         isOnGround = groundDetection.isOnGround;
 
-        horMoveInput = Input.GetAxisRaw("Horizontal"); // Gets input for left/right movement.  returns -1, 0 , 1
+        if(armsInput == Vector2.zero) //default turning settings(when player is not overridding the hand locations)
+        {
+            if(moveInput.x > 0)//moving right
+            {
+                bodyDirection = BodyDirection.Right;
+                desiredArmAngle = 160;
+            }
+            else if (moveInput.x < 0) //moving left
+            {
+                bodyDirection = BodyDirection.Left;
+                desiredArmAngle = 20;
+            }
+        }
+        else //arm-based turn settings (when player is overridding arm position)
+        {
+            desiredArmAngle = Mathf.Atan2(armsInput.y, armsInput.x) * Mathf.Rad2Deg + 180;
 
-        //calculate rotation of Arms based on input
-        float armsAngle = Mathf.Atan2(armsInput.y, armsInput.x) * Mathf.Rad2Deg;
+            if(armsInput.x > 0) //arms right
+            {
+                bodyDirection = BodyDirection.Right;
+            }
+            else if (armsInput.x < 0) //arms left
+            {
+                bodyDirection = BodyDirection.Left;
+            }
 
-        //flip things vased on direction of move
-        if (horMoveInput > 0) //move to right
-        {
-            head.rotation = Quaternion.Euler(0, 180, 0);
-        }
-        else if (horMoveInput < 0) //move to left
-        {
-            head.rotation = Quaternion.Euler(0, 0, 0);
-        }
-        else //not moving
-        {
-            head.localRotation = Quaternion.Euler(0, 0, 0);
-        }
 
-        //flip things based on directon of arms
-        if (armsInput.x >= 0) //arms to right
-        {
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            armAngleCorrection = 0;
-            armsAngle = armsAngle * -1;
-        }
-        else if (armsInput.x < 0) //arms to left
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            armsAngle = armsAngle + 180;
+            if (moveInput.x > 0)//moving right
+            {
+                head.rotation = Quaternion.Euler(0, 180, 0);
+            }
+            else if (moveInput.x < 0)//moving left
+            {
+                head.rotation = Quaternion.Euler(0, 0, 0);
+            }
+            else
+            {
+                head.localRotation = Quaternion.Euler(0, 0, 0);
+            }
         }
 
         //roate arms
+        float armsAngle = Mathf.LerpAngle(lastArmAngle, desiredArmAngle, armSwingSmooth);
+        lastArmAngle = armsAngle;
+        if (bodyDirection == BodyDirection.Right)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            armsAngle = (armsAngle * -1) + 180;
+        }
+        else if(bodyDirection == BodyDirection.Left)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
+
         backArm.localRotation = Quaternion.Euler(0, 0, armsAngle);
         frontArm.localRotation = Quaternion.Euler(0, 0, armsAngle);
 
@@ -185,6 +215,22 @@ public class player : MonoBehaviour
             carriedObject.transform.rotation = Quaternion.Euler(rotationOffset) * pickupPoint.transform.rotation;
         }
 
+        PickupScan();
+
+    }
+
+    void Jump()
+    {
+        //executes jump
+        if (isOnGround == true)
+        {
+            rb.velocity = rb.velocity + Vector2.up * jumpForce;
+            isOnGround = false;
+            //GetComponent<Animator>().Play("Player_jump");
+        }
+    }
+    private void PickupScan()
+    {
         //Check for closest object, apply highlight
         if (carriedObject == null)
         {
@@ -222,10 +268,9 @@ public class player : MonoBehaviour
                 previousClosestObject.GetComponent<SpriteRenderer>().material = defaultCargoMaterial;
             }
         }
-
     }
 
-    private void PickupThrow()
+    private void PickupThrowPress()
     {
         //Pick up closest object
         if (!carriedObject && closestObject)
@@ -234,17 +279,41 @@ public class player : MonoBehaviour
             carriedObject = closestObject;
             carriedObject.GetComponent<SpriteRenderer>().material = defaultCargoMaterial;
             carriedObject.layer = LayerMask.NameToLayer("Player");
-
         }
         //throw
         else if (carriedObject)
         {
+            StartCoroutine(ThrowHold());
+            isThrowing = true;
+        }
+    }
+
+    IEnumerator ThrowHold()
+    {
+        for (throwHoldSeconds = 0; throwHoldSeconds < maxThrowHold; throwHoldSeconds+= Time.deltaTime)
+        {
+            yield return null;
+        }
+    }
+
+    private void PickupThrowRelease()
+    {
+        if(isThrowing)
+        {
             Debug.Log("Drop");
             carriedObject.GetComponent<Rigidbody2D>().velocity = ship.velocity;
-            carriedObject.GetComponent<Rigidbody2D>().velocity += throwAngle * throwVelocity;
-            carriedObject.layer = LayerMask.NameToLayer("Item");
+            Vector2 relativeRight = transform.right;
+            carriedObject.GetComponent<Rigidbody2D>().velocity += -relativeRight * throwVelocity * throwHoldSeconds/maxThrowHold;
+            thrownObject = carriedObject;
+            Invoke("ReactivateCollider", .3f);
             carriedObject = null;
+            isThrowing = false;
         }
+    }
+
+    private void ReactivateCollider() //reactivates the item to collide with the player
+    {
+        thrownObject.layer = LayerMask.NameToLayer("Item");
     }
 
     private void Stabilize() 
@@ -265,7 +334,7 @@ public class player : MonoBehaviour
         //executes horizontal movement
         if (Mathf.Abs(rb.velocity.x - ship.velocity.x) < maxSpeed && isOnGround == true)
         {
-            rb.velocity = rb.velocity + Vector2.right * moveAccel * horMoveInput;
+            rb.velocity = rb.velocity + Vector2.right * moveAccel * moveInput.x;
         }
 
     }
