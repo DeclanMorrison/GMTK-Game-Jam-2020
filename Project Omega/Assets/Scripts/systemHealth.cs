@@ -8,6 +8,7 @@ public enum ItemType
 {
     Fuel,
     Bullets,
+    Welder,
     Rockets,
     Sensors,
 }

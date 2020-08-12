@@ -78,6 +78,8 @@ public class player : MonoBehaviour
     public Material highlight;
     public Material defaultCargoMaterial;
 
+
+    public Vector2 throwDirection;
     void Awake()
     {
         controls = new EngineerControls();
@@ -116,7 +118,8 @@ public class player : MonoBehaviour
         //fetch the ground status from ground detector
         isOnGround = groundDetection.isOnGround;
 
-        if(armsInput == Vector2.zero) //default turning settings(when player is not overridding the hand locations)
+
+        if (armsInput == Vector2.zero) //default turning settings(when player is not overridding the hand locations)
         {
             if(moveInput.x > 0)//moving right
             {
@@ -302,8 +305,12 @@ public class player : MonoBehaviour
         {
             Debug.Log("Drop");
             carriedObject.GetComponent<Rigidbody2D>().velocity = ship.velocity;
-            Vector2 relativeRight = transform.right;
-            carriedObject.GetComponent<Rigidbody2D>().velocity += -relativeRight * throwVelocity * throwHoldSeconds/maxThrowHold;
+            carriedObject.GetComponent<Rigidbody2D>().angularVelocity = 0;
+            throwDirection = pickupPoint.GetComponent<Transform>().right; //right from the hands
+            throwDirection *= -1f;  //flip for left
+            throwDirection.y = throwDirection.y + .8f;  //add some upward
+            throwDirection.Normalize(); //make unit vector
+            carriedObject.GetComponent<Rigidbody2D>().velocity += throwDirection * throwVelocity * throwHoldSeconds/maxThrowHold;
             thrownObject = carriedObject;
             Invoke("ReactivateCollider", .3f);
             carriedObject = null;

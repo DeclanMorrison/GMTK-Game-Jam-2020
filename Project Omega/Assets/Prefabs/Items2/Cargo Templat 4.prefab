@@ -4896,8 +4896,6 @@ MonoBehaviour:
   startVelocity: 30
   startAngle: 90
   startTorque: 0
-  offset: {x: 8.9, y: -3, z: 0}
-  enterVelocity: {x: 0, y: 0}
   scaleFactor: 6
   sparkle: {fileID: 5665571312051527865}
 --- !u!50 &5665571313010196659
@@ -4915,7 +4913,7 @@ Rigidbody2D:
   m_Mass: 4
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 4
   m_Material: {fileID: 6200000, guid: 2d84dbf8a2173cc4a95908b62a1f7648, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
