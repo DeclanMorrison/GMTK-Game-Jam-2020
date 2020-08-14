@@ -32,6 +32,7 @@ public class cargoInSpace : MonoBehaviour
         }
         if (startsInSpace == false)
         {
+            Destroy(sparkle);
             Destroy(this);
         }
     }
