@@ -9,65 +9,60 @@ using UnityEngine.Rendering;
 
 public class player : MonoBehaviour
 {
-
-    //Engineer Controlls (Controller)
+    //Fundamental Engineer Components
     EngineerControls controls;
-
-    //game objects
-    public GroundDetection groundDetection;
     private Rigidbody2D rb;
-    public Rigidbody2D ship;
     private Animator animator;
 
+    //body references
+    public GameObject pickupPoint;
+    public GroundDetection groundDetection;
+    public Transform backArm;
+    public Transform frontArm;
+    public Transform head;
+
     //horizontal movement
-    float horMoveInput;
     public float moveAccel = 1;
     public float maxSpeed = 10f;
+    private Vector2 moveInput;
+
+    //sprinting (probably will get removed)
     public KeyCode sprintKey = KeyCode.None;
     public float sprintMultiplier = 2f;
 
-    private Vector2 moveInput;
-
     //jumping
     public float jumpForce = 1;
-    bool isOnGround = false;
+    private bool isOnGround = false;
 
     //fixing
     public KeyCode fixKey = KeyCode.None;
     public GameObject wrench;
 
     //Stabilization
+    public Rigidbody2D ship;
     public float stabilizationFactor; //amount to stabilize by. between 0 and 1
     private Vector2 lastShipVelocity; //for tracking changes in ship velocity
 
-    //arms
-    public Transform backArm;
-    public Transform frontArm;
-    public Vector2 armsInput;
-    private float desiredArmAngle;
-    public float armSwingSmooth;
-    private float lastArmAngle;
-
-    //Head
-    public Transform head;
-
-    public enum BodyDirection {Left,Right}
-    public BodyDirection bodyDirection = BodyDirection.Left;
+    public enum HorizontalDirection {Left,Right}
+    private HorizontalDirection bodyDirection = HorizontalDirection.Left;
 
     //Holding Settings
     public Vector3 translationOffset;
     public Vector3 rotationOffset;
+    public float armSwingSmooth;
+    private Vector2 armsInput;
+    private float desiredArmAngle;
+    private float lastArmAngle;
 
     //throw settings
+    public Vector2 throwDirection;
     public float throwVelocity;
-    public Vector2 throwAngle;
     public GameObject thrownObject;
     private float throwHoldSeconds;
     public float maxThrowHold = 3;
     private bool isThrowing = false;
 
     //Extra Holding Variables
-    public GameObject pickupPoint;
     private Collider2D pickupRange;
     private ContactFilter2D emptyFilter = new ContactFilter2D();
     public GameObject carriedObject = null;
@@ -78,8 +73,6 @@ public class player : MonoBehaviour
     public Material highlight;
     public Material defaultCargoMaterial;
 
-
-    public Vector2 throwDirection;
     void Awake()
     {
         controls = new EngineerControls();
@@ -88,7 +81,6 @@ public class player : MonoBehaviour
         controls.Gameplay.Arms1.canceled += ctx => armsInput = Vector2.zero;
         controls.Gameplay.PickupThrow.performed += ctx => PickupThrowPress();
         controls.Gameplay.PickupThrow.canceled += ctx => PickupThrowRelease();
-
         controls.Gameplay.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         controls.Gameplay.Movement.canceled += ctx => moveInput = Vector2.zero;
     }
@@ -99,8 +91,6 @@ public class player : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
-
-  
 
     private void OnEnable()
     {
@@ -123,12 +113,12 @@ public class player : MonoBehaviour
         {
             if(moveInput.x > 0)//moving right
             {
-                bodyDirection = BodyDirection.Right;
+                bodyDirection = HorizontalDirection.Right;
                 desiredArmAngle = 160;
             }
             else if (moveInput.x < 0) //moving left
             {
-                bodyDirection = BodyDirection.Left;
+                bodyDirection = HorizontalDirection.Left;
                 desiredArmAngle = 20;
             }
         }
@@ -138,11 +128,11 @@ public class player : MonoBehaviour
 
             if(armsInput.x > 0) //arms right
             {
-                bodyDirection = BodyDirection.Right;
+                bodyDirection = HorizontalDirection.Right;
             }
             else if (armsInput.x < 0) //arms left
             {
-                bodyDirection = BodyDirection.Left;
+                bodyDirection = HorizontalDirection.Left;
             }
 
 
@@ -163,12 +153,12 @@ public class player : MonoBehaviour
         //roate arms
         float armsAngle = Mathf.LerpAngle(lastArmAngle, desiredArmAngle, armSwingSmooth);
         lastArmAngle = armsAngle;
-        if (bodyDirection == BodyDirection.Right)
+        if (bodyDirection == HorizontalDirection.Right)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
             armsAngle = (armsAngle * -1) + 180;
         }
-        else if(bodyDirection == BodyDirection.Left)
+        else if(bodyDirection == HorizontalDirection.Left)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
@@ -192,7 +182,7 @@ public class player : MonoBehaviour
         }
 
         //update move animation
-        if (horMoveInput != 0 && isOnGround == true)
+        if (moveInput.x != 0 && isOnGround == true)
         {
             animator.SetBool("isWalking", true);
         }
@@ -210,18 +200,30 @@ public class player : MonoBehaviour
         }
 
         Stabilize();
-
-        //update position to keep object in hands
-        if (carriedObject != null)
-        {
-            carriedObject.transform.position = pickupPoint.transform.position + translationOffset;
-            carriedObject.transform.rotation = Quaternion.Euler(rotationOffset) * pickupPoint.transform.rotation;
-        }
-
+        CarryUpdate();
         PickupScan();
+    }
+
+    void FixedUpdate()
+    {
+        //executes horizontal movement
+        if (Mathf.Abs(rb.velocity.x - ship.velocity.x) < maxSpeed && isOnGround == true)
+        {
+            rb.velocity = rb.velocity + Vector2.right * moveAccel * moveInput.x;
+        }
 
     }
 
+    private void CarryUpdate()
+    {
+        //update position of carried object to keep object in hands
+        if (carriedObject != null)
+        {
+            carriedObject.transform.position = pickupPoint.transform.position;
+            carriedObject.transform.rotation = Quaternion.Euler(rotationOffset) * pickupPoint.transform.rotation;
+        }
+
+    }
     void Jump()
     {
         //executes jump
@@ -272,7 +274,6 @@ public class player : MonoBehaviour
             }
         }
     }
-
     private void PickupThrowPress()
     {
         //Pick up closest object
@@ -290,7 +291,6 @@ public class player : MonoBehaviour
             isThrowing = true;
         }
     }
-
     IEnumerator ThrowHold()
     {
         for (throwHoldSeconds = 0; throwHoldSeconds < maxThrowHold; throwHoldSeconds+= Time.deltaTime)
@@ -298,7 +298,6 @@ public class player : MonoBehaviour
             yield return null;
         }
     }
-
     private void PickupThrowRelease()
     {
         if(isThrowing)
@@ -317,7 +316,6 @@ public class player : MonoBehaviour
             isThrowing = false;
         }
     }
-
     private void ReactivateCollider() //reactivates the item to collide with the player
     {
         thrownObject.layer = LayerMask.NameToLayer("Item");
@@ -336,13 +334,4 @@ public class player : MonoBehaviour
         lastShipVelocity = ship.GetComponent<Rigidbody2D>().velocity;
     }
 
-    void FixedUpdate()
-    {
-        //executes horizontal movement
-        if (Mathf.Abs(rb.velocity.x - ship.velocity.x) < maxSpeed && isOnGround == true)
-        {
-            rb.velocity = rb.velocity + Vector2.right * moveAccel * moveInput.x;
-        }
-
-    }
 }

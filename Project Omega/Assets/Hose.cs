@@ -19,8 +19,10 @@ public class Hose : MonoBehaviour
         for (int i = 0; i < links; i++)
         {
             GameObject link = Instantiate(linkPrefab, transform);
-            HingeJoint2D joint = link.GetComponent<HingeJoint2D>();
-            joint.connectedBody = previousRB;
+            HingeJoint2D hJoint = link.GetComponent<HingeJoint2D>();
+            SpringJoint2D  sJoint = link.GetComponent<SpringJoint2D>();
+            hJoint.connectedBody = previousRB;
+            sJoint.connectedBody = previousRB;
 
             previousRB = link.GetComponent<Rigidbody2D>();
 

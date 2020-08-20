@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 9123365902113880266}
   m_Layer: 10
   m_Name: welder tank
-  m_TagString: Untagged
+  m_TagString: Cargo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -547,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 4165562834795771517, guid: 4008d90dd562d614fad39db964a17c39,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Cargo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4008d90dd562d614fad39db964a17c39, type: 3}
