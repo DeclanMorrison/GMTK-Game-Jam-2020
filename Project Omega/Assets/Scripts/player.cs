@@ -47,8 +47,6 @@ public class player : MonoBehaviour
     private HorizontalDirection bodyDirection = HorizontalDirection.Left;
 
     //Holding Settings
-    public Vector3 translationOffset;
-    public Vector3 rotationOffset;
     public float armSwingSmooth;
     private Vector2 armsInput;
     private float desiredArmAngle;
@@ -220,7 +218,7 @@ public class player : MonoBehaviour
         if (carriedObject != null)
         {
             carriedObject.transform.position = pickupPoint.transform.position;
-            carriedObject.transform.rotation = Quaternion.Euler(rotationOffset) * pickupPoint.transform.rotation;
+            carriedObject.transform.rotation = pickupPoint.transform.rotation;
         }
 
     }

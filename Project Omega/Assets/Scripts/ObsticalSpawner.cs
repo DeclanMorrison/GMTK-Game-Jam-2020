@@ -18,55 +18,37 @@ public class CargoTypes
     public float startingSpeed;
 }
 
-public class AsteroidSpawner : MonoBehaviour
+[Serializable]
+public class LaserCannonTypes
+{
+    public GameObject laserCannonObject;
+    public float spawnRate;
+}
+
+public class ObsticalSpawner : MonoBehaviour
 {
     System.Random rand = new System.Random();
+
     public List<AsteroidTypes> asteroidTypes = new List<AsteroidTypes>();
+    public float asteroidSpawnMultiplier;
     public List<CargoTypes> cargoTypes = new List<CargoTypes>();
+    public float cargoSpawnMultiplier;
+    public List<LaserCannonTypes> laserCannonTypes = new List<LaserCannonTypes>();
+    public float laserSpawnMultiplier;
 
     //for selecting a spawn location (will draw line between two spawn points and pick a point on it)
-
     public Transform spawnPoint1;
     public Transform spawnPoint2;
     public Transform ship;
 
 
-    public float spawnMultiplier;
-
-    int i = 500;
-    public float round = 1;
-    int difficulty = 1;
-
-
     void FixedUpdate()
-    {
-
-        i = i + 1;
-        if(i > 300) // is called once every 3 seconds
-        {
-            if (round > difficulty)
-            {
-                round = 1;
-                difficulty += 1;
-            }
-
-            if (round == 1 && rand.Next(0, 100) < 70)
-            {
-                round = 1;
-            }
-            else
-            {
-                round = round + 1;
-            }
-            spawnMultiplier = round / 2;
-            i = 0;
-        }
-
+    { 
 
         //run once for each asteroid type
         foreach (AsteroidTypes asteroidType in asteroidTypes)
         {
-            if(rand.NextDouble()*100 < asteroidType.spawnRate*spawnMultiplier)
+            if(rand.NextDouble()*100 < asteroidType.spawnRate*asteroidSpawnMultiplier)
             {
                 Vector3 spawnLocation = PickLocation();
 
@@ -89,7 +71,7 @@ public class AsteroidSpawner : MonoBehaviour
         //run once for each cargo
         foreach (CargoTypes cargoType in cargoTypes)
         {
-            if (rand.NextDouble() * 100 < cargoType.spawnRate * spawnMultiplier)
+            if (rand.NextDouble() * 100 < cargoType.spawnRate * cargoSpawnMultiplier)
             {
                 Vector3 spawnLocation = PickLocation();
 
@@ -102,6 +84,16 @@ public class AsteroidSpawner : MonoBehaviour
                 newCargo.GetComponent<cargoInSpace>().startAngle = spawnAngle + UnityEngine.Random.Range(-15, 15);
                 newCargo.GetComponent<cargoInSpace>().startTorque = rand.Next(-30, 30);
                 
+            }
+        }
+
+        //spawn lasers
+        foreach (LaserCannonTypes laserCannonType in laserCannonTypes)
+        {
+            if (rand.NextDouble() * 100 < laserCannonType.spawnRate * laserSpawnMultiplier)
+            {
+                GameObject newLaserCannon = Instantiate(laserCannonType.laserCannonObject, spawnPoint1.position, transform.rotation);
+                newLaserCannon.GetComponent<LaserCannonBehavior>().isOnTop = (UnityEngine.Random.value > 0.5f);
             }
         }
     }

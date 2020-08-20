@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AlertDisplay : MonoBehaviour
 {
-    public AsteroidSpawner asteroidSpawner;
+    public ObsticalSpawner obsticalSpawner;
     Slider slider;
     public bool isWorking = true;
     System.Random rand = new System.Random();
@@ -21,7 +21,7 @@ public class AlertDisplay : MonoBehaviour
     {
         if (isWorking)
         {
-            slider.value = asteroidSpawner.round;
+            //slider.value = obsticalSpawner.round;
         }
         else
         {

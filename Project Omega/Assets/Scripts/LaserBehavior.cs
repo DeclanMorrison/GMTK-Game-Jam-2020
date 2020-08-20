@@ -10,7 +10,7 @@ public class LaserBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag.Contains("Ship"))
         {
-            collision.gameObject.GetComponent<ShipSubsystems>().Damage(laserDamage, 1, collision.contacts);
+            collision.gameObject.GetComponent<ShipSubsystems>().ImpactDamage(laserDamage, 1, collision.contacts);
         }
     }
 }

@@ -5531,7 +5531,7 @@ GameObject:
   - component: {fileID: 2732632684854223059}
   - component: {fileID: 7858638497087415951}
   - component: {fileID: 2732632684854223061}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ship
   m_TagString: Ship
   m_Icon: {fileID: 0}

@@ -52,7 +52,7 @@ public class AsteroidBehavior : MonoBehaviour
         if (collision.gameObject.tag.Contains("Ship"))
         {
             audio.Play(); //Play sound Effect
-            collision.gameObject.GetComponent<ShipSubsystems>().Damage(sizeInUnits, collision.relativeVelocity.magnitude, collision.contacts);
+            collision.gameObject.GetComponent<ShipSubsystems>().ImpactDamage(sizeInUnits, collision.relativeVelocity.magnitude, collision.contacts);
         }
     }
 }

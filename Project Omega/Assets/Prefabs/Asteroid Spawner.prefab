@@ -55,7 +55,7 @@ MonoBehaviour:
     spawnRate: 0
   - asteroidObject: {fileID: 601328452287981503, guid: ef0c817167ce90d4a850cb74d0a08125,
       type: 3}
-    spawnRate: 0.5
+    spawnRate: 0.6
   - asteroidObject: {fileID: 5736363590541463476, guid: 93f4b0e975b835945b9be9485fbc64d0,
       type: 3}
     spawnRate: 0.1
@@ -64,23 +64,26 @@ MonoBehaviour:
     spawnRate: 0.1
   - asteroidObject: {fileID: 4589939090601546116, guid: 978f8aca2acaa3047b62db25743bf3c5,
       type: 3}
-    spawnRate: 0.1
+    spawnRate: 0.15
   - asteroidObject: {fileID: 5379517679195426198, guid: e21bdc6477c05654499a69272a526e64,
       type: 3}
     spawnRate: 0.05
   cargoTypes:
   - cargoObject: {fileID: 7164787584876442596, guid: f836d4c9e05872d41937ee1f3459d6cc,
       type: 3}
-    spawnRate: 0.1
+    spawnRate: 0.5
     startingSpeed: 50
   - cargoObject: {fileID: 8703142745851929949, guid: f5c4f75454847f249ae3cd0760b6aa52,
       type: 3}
-    spawnRate: 0.1
+    spawnRate: 0.5
     startingSpeed: 50
+  laserCannonTypes:
+  - laserCannonObject: {fileID: 1604957300596062087, guid: 0540698578aed024aa9714b2e4b018c2,
+      type: 3}
+    spawnRate: 1
   spawnPoint1: {fileID: 3340345008620909956}
   spawnPoint2: {fileID: 3340345008589654653}
   ship: {fileID: 0}
-  spawnAngle: 0
   spawnMultiplier: 0
   round: 1
 --- !u!50 &3340345007692379792
@@ -153,7 +156,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 63.44983, y: -11.50769}
+  m_Offset: {x: 71.86337, y: -11.50769}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -164,7 +167,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 964.3616, y: 405.61517}
+  m_Size: {x: 981.18866, y: 405.61517}
   m_EdgeRadius: 0
 --- !u!114 &3340345007692379795
 MonoBehaviour:
@@ -178,8 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: becc81b8a13ac8947aeae277a0767487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 0}
-  respawnOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &3340345008589654654
 GameObject:
   m_ObjectHideFlags: 0
